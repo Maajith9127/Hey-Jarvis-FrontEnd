@@ -5,21 +5,7 @@ const Scrollbar = ({hidden}) => {
 
        
         
-            <div>Location 1</div>
-            <div>Location 1</div>
-            <div>Location 1</div>
-            <div>Location 1</div>
-            <div>Location 1</div>
-            <div>Location 1</div>
-            <div>Location 1</div>
-            <div>Location 1</div>
-            <div>Location 1</div>
-            <div>Location 1</div>
-            <div>Location 1</div>
-            <div>Location 1</div>
-            <div>Location 1</div>
-            <div>Location 1</div>
-
+     
  
         
         </div>

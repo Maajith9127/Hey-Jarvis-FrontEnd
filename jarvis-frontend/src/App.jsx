@@ -6,10 +6,9 @@ import { useEffect } from "react";
 import { Draggable } from "@fullcalendar/interaction"; // Interaction plugin (drag-and-drop)
 
 
+
 function App() {
-
   useEffect(() => {
-
     let ABC_DIV = document.querySelector(".ABC");
     let TODO_DRAGGABLES = ABC_DIV.querySelector(".Todo-Draggable-Elements");
     console.log(TODO_DRAGGABLES);
@@ -25,7 +24,6 @@ function App() {
       });
     }
   }, []);
-
   return (
       <>
         <div className="grid grid-cols-4 gap-1 min-h-screen py-1  ">
