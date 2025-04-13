@@ -17,8 +17,6 @@ import { store } from './ReduxToolkit/store.js';
 createRoot(document.getElementById('root')).render(
   // <StrictMode>
   <Provider store={store}>
-
-
   <Router>
       <Routes>
         <Route path="/" element={<App />} />
@@ -29,9 +27,6 @@ createRoot(document.getElementById('root')).render(
         <Route path="/LiveVideo" element={<LiveVideo/>} />        
       </Routes>
   </Router>
-
   </Provider>
-
-   
   // </StrictMode>,
 )

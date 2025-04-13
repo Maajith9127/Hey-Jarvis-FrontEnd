@@ -4,26 +4,25 @@ import Scrollbar from '../Scrollbar/Scrollbar';
 import { useState } from 'react';
 
 // Reusable ToDoItem component
-const ToDoItem = ({ title, imageSrc }) => {
+const ToDoItem = ({ title, imageSrc}) => {
     
    const [scroll, setscroll] = useState(true)
-
+   const [key, setkey] = useState("")
 
      const scrolldown=(e)=>{
         console.log("The key is ",e.target.key)
         console.log("Toggled",title)
         if(scroll){
             setscroll(false)
+            setkey(title)
         }
         else{
             setscroll(true)
-        }
-            
-     }
-    
+        }  
+     }    
     return (
         <div className="Todos border flex items-center justify-between w-[90%] pl-1 py-9 rounded-2xl relative ">
-            <Scrollbar hidden={scroll} />
+            <Scrollbar className='Scrollbar' hidden={scroll} title={key} />
             <div className='flex justify-start items-center '>
                 {imageSrc && <img src={imageSrc} width={"50px"} alt={title} />}
                 <nav>
@@ -36,6 +35,13 @@ const ToDoItem = ({ title, imageSrc }) => {
         </div>
     );
 };
+
+
+
+
+
+
+
 
 const ToDos = () => {
     return (

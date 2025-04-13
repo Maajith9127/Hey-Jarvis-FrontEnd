@@ -119,4 +119,10 @@ input {
     background-color:transparent;
 }
 
+.ScrollBar_Elements {
+  cursor: grab;
+}
 
+.ScrollBar_Elements:active {
+  cursor: grabbing;
+}

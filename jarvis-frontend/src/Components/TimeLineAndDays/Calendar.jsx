@@ -6,32 +6,62 @@ import dayGridPlugin from "@fullcalendar/daygrid"; // Day Grid plugin (Month vie
 import interactionPlugin, { Draggable } from "@fullcalendar/interaction"; // Interaction plugin (drag-and-drop)
 import timeGridPlugin from "@fullcalendar/timegrid"; // Time Grid plugin (Week view)
 
+
+import { useDispatch, useSelector } from 'react-redux';
+import {
+  addEventsToRedux,
+  updateEventInRedux,
+  deleteEventFromRedux
+} from '../../ReduxToolkit/Slices/CalendarSlice.jsx'; // Adjust the path if needed
+
+
 const Calendarr = () => {
-    const [events, setevents] = useState([
-        { title: "event1", id: "1" },
-        { title: "event2", id: "2" },
-        { title: "event3", id: "3" },
-        { title: "event4", id: "4" },
-    ]);
+  
+   
 
-    const [allEvents, setAllEvents] = useState([
-        { title: "Sample Event 1", id: "1", start: "2025-04-01T10:00:00", allDay: false },
-        { title: "Sample Event 2", id: "2", start: "2025-04-02T14:00:00", allDay: true },
+    const dispatch = useDispatch();
+const allEvents = useSelector((state) => state.calendar.CalendarEvents); // Make sure reducer key is `calendar`
 
-    ]);
-    const [newEvent, setNewEvent] = useState({
-        title: "",
-        date: "",
-        start: "",
-        allDay: false,
-        id: 0,
-    })
-    const addEvent = (arg) => {
-        console.log("Hey you have dropped this event")
-        const event = { ...newEvent, start: arg.date.toISOString(), title: arg.draggedEl.innerText, allDay: arg.allDay, id: new Date().getTime() }
-        setAllEvents([...allEvents, event])
-        console.log(allEvents)
-    }
+    const handleDrop = (info) => {
+        const newEvent = {
+          TodoId: info.event.id,
+          SpecificEventId: info.event.extendedProps.SpecificEventId,
+          title: info.event.title,
+          start: info.event.start.toISOString(),
+          end: info.event.end ? info.event.end.toISOString() : null,
+          allDay: info.event.allDay,
+        };
+      
+        dispatch(addEventsToRedux(newEvent));
+      };
+      
+    const handleChange = (info) => {
+        const updatedEvent = {
+          SpecificEventId: info.event.extendedProps.SpecificEventId,
+          TodoId: info.event.extendedProps.TodoId,
+          title: info.event.title,
+          start: info.event.start.toISOString(),
+          end: info.event.end ? info.event.end.toISOString() : null,
+          allDay: info.event.allDay,
+        };
+      
+        dispatch(updateEventInRedux(updatedEvent));
+      };
+      
+    const handleResize = (info) => {
+        const updatedEvent = {
+          SpecificEventId: info.event.extendedProps.SpecificEventId,
+          TodoId: info.event.extendedProps.TodoId,
+          title: info.event.title,
+          start: info.event.start.toISOString(),
+          end: info.event.end ? info.event.end.toISOString() : null,
+          allDay: info.event.allDay,
+        };
+      
+        dispatch(updateEventInRedux(updatedEvent));
+      };
+      
+      
     const confirmationDelete = (arg) => {
         const res = prompt("Are you sure you want to delete this event? (yes/no)");
         console.log("Hiiiiiiiiii");
@@ -42,21 +72,19 @@ const Calendarr = () => {
             return false;
         }
     }
+
     const handleDelete = async (arg) => {
-        let confirmation = confirmationDelete(arg)
+        let confirmation = confirmationDelete(arg);
         if (!confirmation) {
-            console.log("Delete action canceled.");
-            return;
+          console.log("Delete action canceled.");
+          return;
         }
-        else {
-            console.log("Hey the event before was")
-            console.log(allEvents)
-            console.log("The id to delet is", arg.event.id)
-            const idToDelete = arg.event.id
-            const updatedEvents = allEvents.filter(event => event.id != idToDelete);
-            setAllEvents(updatedEvents);
-        }
-    };
+      
+        const idToDelete = arg.event.extendedProps.SpecificEventId;
+        dispatch(deleteEventFromRedux(idToDelete));
+      };
+      
+
     return (
         <>
             <FullCalendar
@@ -72,11 +100,15 @@ const Calendarr = () => {
                 droppable={true}
                 selectable={true}
                 selectMirror={true}
-                // Implement the drop, dateClick, etc.
-                drop={addEvent}
+        //................................
                 eventClick={handleDelete}
                 events={allEvents}
                 height="143%"
+                //eventReceive-Here you can access event drop and access the meta dat from new draggable
+                eventReceive={handleDrop}
+                //
+                eventDrop={handleChange}
+                eventResize={handleResize}
             />
         </>
     );
