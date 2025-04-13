@@ -7,30 +7,7 @@ import { Draggable } from "@fullcalendar/interaction"; // Interaction plugin (dr
 import { v4 as uuidv4 } from 'uuid';
 
 function App() {
-  // useEffect(() => {
-  //   let ABC_DIV = document.querySelector(".ABC");
-  //   let TODO_DRAGGABLES = ABC_DIV.querySelector(".Todo-Draggable-Elements");
-  //   console.log('To do draggable eleemnts')
-  //   console.log(TODO_DRAGGABLES)
-  //   let TODOs=TODO_DRAGGABLES.querySelectorAll(".Todos")
-  //   console.log(TODOs)
-  //   TODOs.forEach(element => {
-  //     let scrollable=element.querySelector(".Scrollbar")
-  //     let scrollableElements
-  //     console.log(scrollable)
-  //   });
-  //   // if (TODO_DRAGGABLES) {
-  //   //   new Draggable(TODO_DRAGGABLES, {
-  //   //     itemSelector: ".Scrollbar_Elements", // ✅ ONLY scrollbars will be draggable
-  //   //     eventData: function (element) {
-  //   //       return {
-  //   //         title: element.innerText || "Untitled",
-  //   //         customType: "scrollbar-item", // Optional metadata
-  //   //       };
-  //   //     },
-  //   //   });
-  //   // }
-  // }, []);
+
  
   useEffect(() => {
     const TODO_DRAGGABLES = document.querySelector(".Todo-Draggable-Elements");
