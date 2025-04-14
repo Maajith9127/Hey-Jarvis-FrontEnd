@@ -2,10 +2,10 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 
 const Scrollbar = ({ hidden, title,className }) => {
-  console.log('scrollbar')
-  console.log(title);
+
 
   const photos = useSelector((state) => state.photo.Photos);
+  const messages=useSelector((state)=> state.message.messages);
 
   const renderContent = () => {
     switch (title) {
@@ -19,9 +19,16 @@ const Scrollbar = ({ hidden, title,className }) => {
             </ul>
           </div>
         );
-      
-      
-      
+      case 'MESSAGE':
+        return (
+          <div className=''>
+            <ul className="list-disc ml-5">
+              {messages.map((message) => (
+                <div className='ScrollBar_Elements' key={message.AccountabilityId} data-id={message.AccountabilityId}> {message.message} </div>
+              ))}
+            </ul>
+          </div>
+        );
         default:
         return <p>No content selected.</p>;
     }
