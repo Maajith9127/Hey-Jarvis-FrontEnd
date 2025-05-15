@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import './index.css'
 import App from './App.jsx'
 
-import Location from './Components/ToDos/LivePhoto/LivePhoto.jsx';
+import Photo from './Components/ToDos/LivePhoto/LivePhoto.jsx';
 import KeepMeAwake from './Components/ToDos/KeepMeAwake/KeepMeAwake.jsx';
 import WebBlocking from './Components/ToDos/WebBlocking/WebBlocking.jsx';
 import AppBlocking from './Components/ToDos/AppBlocking/AppBlocking.jsx';
@@ -23,7 +23,7 @@ createRoot(document.getElementById('root')).render(
       <Routes>
         {/* To Dos */}
         <Route path="/" element={<App />} />
-        <Route path="/livephoto" element={<Location />} />
+        <Route path="/livephoto" element={<Photo />} />
         <Route path="/keepmeawake" element={<KeepMeAwake/>} />
         <Route path="/webblocking" element={<WebBlocking/>} />
         <Route path="/appblocking" element={<AppBlocking/>} />

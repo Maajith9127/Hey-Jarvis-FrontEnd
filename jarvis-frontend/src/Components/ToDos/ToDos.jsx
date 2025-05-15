@@ -36,13 +36,6 @@ const ToDoItem = ({ title, imageSrc}) => {
     );
 };
 
-
-
-
-
-
-
-
 const ToDos = () => {
     return (
         <div className="Todo-Draggable-Elements borde min-h-[100%] flex flex-col gap-4 justify-center items-center">
@@ -52,7 +45,6 @@ const ToDos = () => {
             <ToDoItem title="KEEP ME AWAKE" imageSrc="src/assets/wake.svg" />
             <ToDoItem title="WEB BLOCKING" imageSrc="src/assets/website.svg" />
             <ToDoItem title="APP BLOCKING" imageSrc="src/assets/apps.svg" />
-
         </div>
     );
 };

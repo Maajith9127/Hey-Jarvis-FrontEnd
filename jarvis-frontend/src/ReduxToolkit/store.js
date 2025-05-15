@@ -1,5 +1,5 @@
 import { configureStore } from '@reduxjs/toolkit';
-import  PhotoReducer  from './Slices/PhotoSlice.jsx';
+import PhotoReducer  from './Slices/PhotoSlice.jsx';
 import calendarReducer from './Slices/CalendarSlice';
 import MessageReducer from './Slices/MessageSlice.jsx'
 
