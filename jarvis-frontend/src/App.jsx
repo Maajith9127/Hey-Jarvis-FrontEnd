@@ -27,6 +27,7 @@ function App() {
       new Draggable(TODO_DRAGGABLES, {
         itemSelector: ".ScrollBar_Elements",
         eventData: function (element) {
+          const collectionType = element.getAttribute('data-collectiontype'); // 👈
           const todoId = element.getAttribute('data-id'); // the original id from Scrollbar item
           return {
             id: todoId,
@@ -35,6 +36,7 @@ function App() {
               Type: "Todo",
               TodoId: todoId,
               SpecificEventId: uuidv4(), // 🔥 generate only ONCE on drop
+              CollectionType: collectionType,
             },
           };
         },
@@ -57,6 +59,7 @@ function App() {
       new Draggable(ACCOUNTABILITY_DRAGGABLES, {
         itemSelector: ".ScrollBar_Elements",
         eventData: function (element) {
+          const collectionType = element.getAttribute('data-collectiontype'); // 👈
           const AccountabilityId = element.getAttribute('data-id'); // the original id from Scrollbar item
           return {
             id: AccountabilityId,
@@ -65,6 +68,7 @@ function App() {
               Type: "Accountability",
               AccountabilityId: AccountabilityId,
               SpecificEventId: uuidv4(), // 🔥 generate only ONCE on drop
+              CollectionType: collectionType,
             },
           };
         },
@@ -81,113 +85,43 @@ function App() {
 
   const dispatch = useDispatch();
 
-useEffect(() => {
-  const FetchAllData = async () => {
-    try {
-      const res = await fetch("http://localhost:3000/GetAll", {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
+  useEffect(() => {
+    const FetchAllData = async () => {
+      try {
+        const res = await fetch("http://localhost:3000/GetAll", {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        });
 
-      const data = await res.json();
+        const data = await res.json();
 
-      const accountabilityMessages = data?.Accountability || [];
-      const livePhotos = data?.LivePhotos || [];
-      const calendarEvents = data?.Calendar || [];
-      console.log("Fetched data", data);
+        const accountabilityMessages = data?.Accountability || [];
+        const livePhotos = data?.LivePhotos || [];
+        const calendarEvents = data?.Calendar || [];
+        console.log("Fetched data", data);
 
-      // ✅ Map through and dispatch one by one
-      accountabilityMessages.forEach((msg) => {
-        dispatch(addMessageToRedux(msg));
-      });
+        // ✅ Map through and dispatch one by one
+        accountabilityMessages.forEach((msg) => {
+          dispatch(addMessageToRedux(msg));
+        });
 
-      calendarEvents.forEach((event) => {
-        dispatch(addEventsToRedux(event));
-      });
+        calendarEvents.forEach((event) => {
+          dispatch(addEventsToRedux(event));
+        });
 
-      livePhotos.photos.forEach((photo) => {
-        dispatch(AddPhotoToRedux(photo)); // Uncomment this if photo slice is implemented
-      });
+        livePhotos.photos.forEach((photo) => {
+          dispatch(AddPhotoToRedux(photo)); // Uncomment this if photo slice is implemented
+        });
 
-    } catch (error) {
-      console.error("Error fetching data", error);
-    }
-  };
+      } catch (error) {
+        console.error("Error fetching data", error);
+      }
+    };
 
-  FetchAllData();
-}, []);
-
-
-
-
-
-  // const dispatch = useDispatch();
-  // const [PhotosFromDb, setPhotosFromDb] = useState([])
-  // useEffect(() => {
-  //   console.log("He this is Photos from Db")
-
-  //   const fetchPhotosFromDb = async () => {
-  //     try {
-  //       const res = await fetch("http://localhost:3000/apiPhotos/GetLivePhotos", {
-  //         method: "GET",
-  //         headers: {
-  //           "Content-Type": "application/json",
-  //         },
-  //       }
-  //       )
-
-  //       const DbPhotos = await res.json();
-
-  //       console.log("Db Photos Look Like", DbPhotos);
-  //       setPhotosFromDb(DbPhotos.Photos);
-
-  //     } catch (error) {
-
-  //     }
-
-  //   }
-  //   fetchPhotosFromDb();
-  //   console.log("after async fn")
-  //   //load data back to redux after refresh
-  // }, [])
-  // useEffect(() => {
-  //   PhotosFromDb.forEach(photo => {
-  //     dispatch(AddPhotoToRedux(photo));
-  //   })
-  // })
-
-  // const [DbEvents, setDbEvents] = useState([])
-  // useEffect(() => {
-  //   const FetchFromDb = async () => {
-  //     try {
-  //       const response = await fetch("http://localhost:3000/apiCalendar/GetAllEvents", {
-  //         method: "GET",
-  //         headers: {
-  //           "Content-Type": "application/json",
-  //         },
-  //       });
-  //       const data = await response.json(); // ✅ properly awaited
-  //       console.log("Events from DB", data);
-  //       setDbEvents(data.Events);
-  //       console.log("Hey all the eventd frim the db are", data.Events)
-  //       console.log(DbEvents) // ✅ assumes response shape is { events: [...] }
-
-  //     } catch (error) {
-  //       console.error("❌ Error fetching events:", error);
-  //     }
-  //   };
-
-  //   FetchFromDb();
-  // }, []);
-  // useEffect(() => {
-  //   for (let i = 0; i < DbEvents.length; i++) {
-  //     console.log(DbEvents[i])
-  //     dispatch(addEventsToRedux(DbEvents[i]));
-  //   }
-  // })
-
+    FetchAllData();
+  }, []);
 
   return (
     <>

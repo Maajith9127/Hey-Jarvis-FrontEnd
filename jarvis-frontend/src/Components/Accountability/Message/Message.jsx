@@ -26,8 +26,8 @@ const Message = () => {
                 const data = await res.json();
                 console.log("Fetched messages", data.Messages);
                 // Dispatch the fetched messages to Redux
-                data.Messages.map((message)=>{
-                    console.log("Messages",message)
+                data.Messages.map((message) => {
+                    console.log("Messages", message)
                     dispatch(addMessageToRedux(message))
                 })
             } catch (error) {
@@ -44,7 +44,7 @@ const Message = () => {
                 headers: {
                     "Content-Type": "application/json",
                 },
-                body: JSON.stringify({Accountability:Messages}),
+                body: JSON.stringify({ Accountability: Messages }),
             });
             const data = await res.json();
             console.log("Response from server", data);
@@ -60,6 +60,7 @@ const Message = () => {
             AccountabilityId: uuidv4(),
             message: "Message",
             ToAddress: "Email",
+            CollectionType: "MessageCollection",
         }
         dispatch(addMessageToRedux(newMessage))
     }

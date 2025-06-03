@@ -56,6 +56,7 @@ const Calendarr = () => {
             end: endTime.toISOString(),
             timeSlot: timeSlot,
             StrictMode: false,
+            CollectionType: info.event.extendedProps.CollectionType,
         };
 
         // 💥 Conditionally add the correct ID field
@@ -63,7 +64,7 @@ const Calendarr = () => {
             newEvent.TodoId = info.event.id;
         } else if (info.event.extendedProps.Type === "Accountability") {
             newEvent.AccountabilityId = info.event.id;
-            newEvent.verified=false;
+            newEvent.verified = false;
         }
 
         const eventsBefore = store.getState().calendar.CalendarEvents.length;
@@ -101,6 +102,7 @@ const Calendarr = () => {
             end: endTime.toISOString(),
             timeSlot: timeSlot,
             StrictMode: false,
+            CollectionType: info.event.extendedProps.CollectionType,
         };
         console.log("Updated event:", updatedEvent);
         dispatch(updateEventInRedux(updatedEvent));
