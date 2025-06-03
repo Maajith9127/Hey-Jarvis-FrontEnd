@@ -42,15 +42,6 @@ export const PhotoSlice = createSlice(
             }
         }
     }
-
-
-
-
-
 )
-
-
-
 export const { AddPhotoToRedux, DeletePhotoFromRedux, UpdatePhotoFromRedux, UpdatePhotoUrlFromRedux } = PhotoSlice.actions;
-
 export default PhotoSlice.reducer;

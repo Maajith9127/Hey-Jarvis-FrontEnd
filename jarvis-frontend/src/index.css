@@ -59,8 +59,10 @@ input {
 
 /* Calendar body */
 .fc-view {
-  @apply w-full h-full lg:h-3/4 xl:h-2/3 bg-white rounded-lg shadow-md border border-slate-200 overflow-hidden;
+  @apply w-full bg-white rounded-lg shadow-md border border-slate-200 overflow-hidden;
+  height: auto !important;
 }
+
 
 .fc-scrollgrid-sync-table {
   @apply w-full;
@@ -126,3 +128,31 @@ input {
 .ScrollBar_Elements:active {
   cursor: grabbing;
 }
+
+.accountability-event {
+  @apply bg-red-500 border-l-4 border-red-700 text-white;
+}
+.fc .fc-timegrid-slot {
+  height: 2px !important;
+  min-height: 2px !important;
+  max-height: 2px !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  line-height: 1 !important;
+}
+
+
+/* Optional: Light grid stripe every 5 mins for visibility */
+.fc .fc-timegrid-slot:nth-child(5n) {
+  background-color: #f9fafb;
+}
+/* Default accountability event (unverified = red) */
+.accountability-event {
+  @apply bg-red-500 border-l-4 border-red-700 text-white;
+}
+
+/* ✅ If verified, override with green styles */
+.accountability-event.verified {
+  @apply bg-green-500 border-green-700;
+}
+

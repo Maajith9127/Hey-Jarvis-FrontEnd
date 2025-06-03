@@ -6,13 +6,19 @@ import { useEffect } from "react";
 import { Draggable } from "@fullcalendar/interaction"; // Interaction plugin (drag-and-drop)
 import { v4 as uuidv4 } from 'uuid';
 
-
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { AddPhotoToRedux } from "./ReduxToolkit/Slices/PhotoSlice";
 import { addEventsToRedux } from "./ReduxToolkit/Slices/CalendarSlice"; // Adjust the path if needed
+import { addMessageToRedux } from "./ReduxToolkit/Slices/MessageSlice";
+import { renderMicroColGroup } from "@fullcalendar/core/internal";
 
 function App() {
+
+
+  const [AccountabilityMessages, setAccountabilityMessages] = useState([])
+  const [LivePhotos, setLivePhotos] = useState([])
+  const [CalendarEvents, setCalendarEvents] = useState([])
 
   useEffect(() => {
     const TODO_DRAGGABLES = document.querySelector(".Todo-Draggable-Elements");
@@ -73,81 +79,121 @@ function App() {
   }, []);
 
 
-
   const dispatch = useDispatch();
-  const [PhotosFromDb, setPhotosFromDb] = useState([])
-  useEffect(() => {
-    console.log("He this is Photos from Db")
 
-    const fetchPhotosFromDb = async () => {
-      try {
-        const res = await fetch("http://localhost:3000/apiPhotos/GetLivePhotos", {
-          method: "GET",
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }
-        )
+useEffect(() => {
+  const FetchAllData = async () => {
+    try {
+      const res = await fetch("http://localhost:3000/GetAll", {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
 
-        const DbPhotos = await res.json();
+      const data = await res.json();
 
-        console.log("Db Photos Look Like", DbPhotos);
-        setPhotosFromDb(DbPhotos.Photos);
+      const accountabilityMessages = data?.Accountability || [];
+      const livePhotos = data?.LivePhotos || [];
+      const calendarEvents = data?.Calendar || [];
+      console.log("Fetched data", data);
 
-      } catch (error) {
+      // ✅ Map through and dispatch one by one
+      accountabilityMessages.forEach((msg) => {
+        dispatch(addMessageToRedux(msg));
+      });
 
-      }
+      calendarEvents.forEach((event) => {
+        dispatch(addEventsToRedux(event));
+      });
 
+      livePhotos.photos.forEach((photo) => {
+        dispatch(AddPhotoToRedux(photo)); // Uncomment this if photo slice is implemented
+      });
+
+    } catch (error) {
+      console.error("Error fetching data", error);
     }
-    fetchPhotosFromDb();
-    console.log("after async fn")
-    //load data back to redux after refresh
-  }, [])
-  useEffect(() => {
-    PhotosFromDb.forEach(photo => {
-      dispatch(AddPhotoToRedux(photo));
-    })
-  })
+  };
+
+  FetchAllData();
+}, []);
 
 
-  const [DbEvents, setDbEvents] = useState([])
-  useEffect(() => {
-    const FetchFromDb = async () => {
-      try {
-        const response = await fetch("http://localhost:3000/apiCalendar/GetAllEvents", {
-          method: "GET",
-          headers: {
-            "Content-Type": "application/json",
-          },
-        });
-        const data = await response.json(); // ✅ properly awaited
-        console.log("Events from DB", data);
-        setDbEvents(data.Events);
-        // data.Events.forEach(event => {
-        //     dispatch(addEventsToRedux(event));
-        // });
-        console.log(DbEvents) // ✅ assumes response shape is { events: [...] }
 
-      } catch (error) {
-        console.error("❌ Error fetching events:", error);
-      }
-    };
 
-    FetchFromDb();
-  }, []);
-  useEffect(() => {
-    DbEvents.forEach(event => {
-      dispatch(addEventsToRedux(event));
-    })
-  })
+
+  // const dispatch = useDispatch();
+  // const [PhotosFromDb, setPhotosFromDb] = useState([])
+  // useEffect(() => {
+  //   console.log("He this is Photos from Db")
+
+  //   const fetchPhotosFromDb = async () => {
+  //     try {
+  //       const res = await fetch("http://localhost:3000/apiPhotos/GetLivePhotos", {
+  //         method: "GET",
+  //         headers: {
+  //           "Content-Type": "application/json",
+  //         },
+  //       }
+  //       )
+
+  //       const DbPhotos = await res.json();
+
+  //       console.log("Db Photos Look Like", DbPhotos);
+  //       setPhotosFromDb(DbPhotos.Photos);
+
+  //     } catch (error) {
+
+  //     }
+
+  //   }
+  //   fetchPhotosFromDb();
+  //   console.log("after async fn")
+  //   //load data back to redux after refresh
+  // }, [])
+  // useEffect(() => {
+  //   PhotosFromDb.forEach(photo => {
+  //     dispatch(AddPhotoToRedux(photo));
+  //   })
+  // })
+
+  // const [DbEvents, setDbEvents] = useState([])
+  // useEffect(() => {
+  //   const FetchFromDb = async () => {
+  //     try {
+  //       const response = await fetch("http://localhost:3000/apiCalendar/GetAllEvents", {
+  //         method: "GET",
+  //         headers: {
+  //           "Content-Type": "application/json",
+  //         },
+  //       });
+  //       const data = await response.json(); // ✅ properly awaited
+  //       console.log("Events from DB", data);
+  //       setDbEvents(data.Events);
+  //       console.log("Hey all the eventd frim the db are", data.Events)
+  //       console.log(DbEvents) // ✅ assumes response shape is { events: [...] }
+
+  //     } catch (error) {
+  //       console.error("❌ Error fetching events:", error);
+  //     }
+  //   };
+
+  //   FetchFromDb();
+  // }, []);
+  // useEffect(() => {
+  //   for (let i = 0; i < DbEvents.length; i++) {
+  //     console.log(DbEvents[i])
+  //     dispatch(addEventsToRedux(DbEvents[i]));
+  //   }
+  // })
 
 
   return (
     <>
-      <div className="grid grid-cols-4 gap-1 min-h-screen py-1  ">
+      <div className="grid border grid-cols-4 gap-1 min-h-screen  py-1  ">
         <div className="ABC col-span-1">
           <ToDos />
-         
         </div>
         <div className="col-span-2">
           <TimeLineAndDays />

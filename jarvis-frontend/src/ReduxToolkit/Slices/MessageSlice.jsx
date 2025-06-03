@@ -10,13 +10,23 @@ const MessageSlice = createSlice({
   initialState,
   reducers: {
     addMessageToRedux: (state, action) => {
-      console.log(action.payload)
-      state.messages.push(action.payload)
+      // console.log(action.payload)
+    
+      //Here we need to check if the elemenet already exits or not before adding it to the redux states
+      const existingMessage= state.messages.find(
+        (message) => message.AccountabilityId === action.payload.AccountabilityId   
+      );
+      if (existingMessage) {
+        // console.warn("⚠️ Message already exists with AccountabilityId:", action.payload.AccountabilityId);
+        return; // ❌ Exit early to prevent duplicate
+      } else {
+        state.messages.push(action.payload);
+      }
     },
 
     deleteMessageFromRedux: (state, action) => {
-      console.log("deleted")
-      console.log(action.payload)
+      // console.log("deleted")
+      // console.log(action.payload)
       let UpdatedMessageList = state.messages.filter((message) => message.AccountabilityId !== action.payload.AccountabilityIdToDelete)
       state.messages = UpdatedMessageList;
     },

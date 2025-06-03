@@ -1,20 +1,23 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
-
+import { setChallengeData } from '../../../../ReduxToolkit/Slices/ChallengeSlice'
+import { useDispatch } from 'react-redux'
 
 const VerfiyList = ({ photoid: photoid }) => {
-  const VerifyPhoto=(event)=>{
+  const dispatch = useDispatch();
+  const VerifyPhoto = async (event) => {
     console.log("Verify Photo Clicked");
     const data = JSON.parse(event.target.dataset.id);
     console.log("Data", data);
-    fetch("http://localhost:3000/apiLivePhotoVerfication", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },  
-      body: JSON.stringify({data}),
-  })
-}
+    dispatch(setChallengeData(data));
+    // await fetch("http://localhost:3000/apiLivePhotoVerfication/ConvertUploadedImageUrlToBase64", {
+    //   method: "POST",
+    //   headers: {
+    //     "Content-Type": "application/json",
+    //   },
+    //   body: JSON.stringify(data)
+    // })
+  }
 
   let CalendarEvents = useSelector((state) => { return state.calendar.CalendarEvents })
   console.log("Calendar Events", CalendarEvents);
@@ -70,7 +73,7 @@ const VerfiyList = ({ photoid: photoid }) => {
               </ul>
 
               <button
-              onClick={VerifyPhoto}
+                onClick={VerifyPhoto}
                 className='border'
                 data-id={JSON.stringify({
                   Todoid: event.TodoId,
@@ -80,9 +83,6 @@ const VerfiyList = ({ photoid: photoid }) => {
               >
                 Verify
               </button>
-
-
-
             </div>
           );
         })}
