@@ -2,37 +2,8 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 
 const Scrollbar = ({ hidden, title, className }) => {
-
-
   const photos = useSelector((state) => state.photo.Photos);
   const messages = useSelector((state) => state.message.messages);
-
-  // const renderContent = () => {
-  //   switch (title) {
-  //     case 'LIVE PHOTO':
-  //       return (
-  //         <div className=''>
-  //           <ul className="list-disc ml-5">
-  //             {photos.map((photo) => (
-  //               <div className='ScrollBar_Elements' key={photo.id} data-id={photo.id}> {photo.photoName} </div>
-  //             ))}
-  //           </ul>
-  //         </div>
-  //       );
-  //     case 'MESSAGE':
-  //       return (
-  //         <div className=''>
-  //           <ul className="list-disc ml-5">
-  //             {messages.map((message) => (
-  //               <div className='ScrollBar_Elements' key={message.AccountabilityId} data-id={message.AccountabilityId}> {message.message} </div>
-  //             ))}
-  //           </ul>
-  //         </div>
-  //       );
-  //       default:
-  //       return <p>No content selected.</p>;
-  //   }
-  // };
 
   const renderContent = () => {
     switch (title) {
@@ -45,7 +16,7 @@ const Scrollbar = ({ hidden, title, className }) => {
                   className="ScrollBar_Elements"
                   key={photo.id}
                   data-id={photo.id}
-                  data-collectiontype="PhotoCollection" // 👈 Add this
+                  data-collectiontype="PhotoCollection"
                 >
                   {photo.photoName}
                 </div>
@@ -62,7 +33,7 @@ const Scrollbar = ({ hidden, title, className }) => {
                   className="ScrollBar_Elements"
                   key={message.AccountabilityId}
                   data-id={message.AccountabilityId}
-                  data-collectiontype="MessageCollection" // 👈 Add this
+                  data-collectiontype="MessageCollection"
                 >
                   {message.message}
                 </div>
@@ -75,13 +46,13 @@ const Scrollbar = ({ hidden, title, className }) => {
     }
   };
 
-
-
-
   return (
     <div
-      className={`absolute bg-white px-1  rounded-3xl right-10 bottom-[-45px] border w-[80%] h-[70%] overflow-y-scroll  ${className}  ${hidden ? 'hidden' : ''
-        }`}
+      className={`absolute bg-white/95 backdrop-blur-sm px-4 py-3 rounded-2xl shadow-xl border border-slate-200 
+                       right-2 top-full mt-2 w-[320px] max-w-[90vw] h-[280px] max-h-[60vh] 
+                       overflow-y-auto z-50 transition-all duration-300 transform origin-top-right
+                       ${hidden ? 'opacity-0 scale-95 pointer-events-none' : 'opacity-100 scale-100'} 
+                       ${className}`}
     >
       {renderContent()}
     </div>
