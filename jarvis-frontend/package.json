@@ -17,6 +17,7 @@
     "@fullcalendar/timegrid": "^6.1.15",
     "@reduxjs/toolkit": "^2.6.1",
     "@tailwindcss/vite": "^4.0.17",
+    "axios": "^1.10.0",
     "base64-js": "^1.5.1",
     "dataurl-to-blob": "^0.0.1",
     "moment": "^2.30.1",

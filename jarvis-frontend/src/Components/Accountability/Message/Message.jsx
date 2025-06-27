@@ -218,7 +218,7 @@ const Message = () => {
         }
     };
 
-    // 🧠 Message actions
+    //  Message actions
     const AddMessageToRedux = () => {
         const newMessage = {
             AccountabilityId: uuidv4(),

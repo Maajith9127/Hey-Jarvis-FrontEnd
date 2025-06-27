@@ -4,10 +4,13 @@ import { useSelector } from 'react-redux'
 import { useState } from 'react';
 import StrictModeModal from '../Modals/StrictModeModal';
 import RepeatModal from '../Modals/RepeatModal';
-
+import { useEffect } from 'react';
 const CalendarControls = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [showRepeatModal, setShowRepeatModal] = useState(false);
+  const [nextScheduleTime, setNextScheduleTime] = useState(null);
+
+
 
   const HandleSubmit = async () => {
     const state = store.getState();
@@ -24,12 +27,33 @@ const CalendarControls = () => {
       });
       const result = await res.json();
       console.log("✅ Synced:", result);
+
+      if (result?.nextScheduledAt) {
+        const nextTime = new Date(result.nextScheduledAt); // ✅ Define this first
+        setNextScheduleTime(nextTime);
+        localStorage.setItem("nextScheduleTime", nextTime.toString());
+
+      } else {
+        setNextScheduleTime(null); // no upcoming events
+        localStorage.removeItem("nextScheduleTime");
+
+      }
+      console.log("✅ Synced:", result);
+      window.location.reload();
       return result;
     } catch (err) {
       console.error("❌ Sync failed:", err);
     }
     console.log("Payload to save", payload);
   };
+
+  useEffect(() => {
+    const savedTime = localStorage.getItem("nextScheduleTime");
+    if (savedTime) {
+      setNextScheduleTime(new Date(savedTime));
+    }
+  }, []);
+
 
 
 
@@ -122,6 +146,40 @@ const CalendarControls = () => {
       >
         SignIn
       </button>
+
+      {nextScheduleTime ? (
+        <div className="mt-2 w-full flex justify-center">
+          <div className="flex items-center gap-2 bg-blue-50 border border-blue-300 text-blue-700 text-sm rounded-lg px-4 py-2 shadow-sm">
+            <span className="text-lg">⏰</span>
+            <span>
+              Next verification at:{" "}
+              <span className="font-semibold">
+                {nextScheduleTime.toLocaleString("en-IN", {
+                  timeZone: "Asia/Kolkata",
+                  hour: "2-digit",
+                  minute: "2-digit",
+                  hour12: true,
+                  day: "numeric",
+                  month: "short",
+                  weekday: "short",
+                })}
+              </span>
+            </span>
+          </div>
+        </div>
+      ) : (
+        <div className="mt-2 w-full flex justify-center">
+          <div className="bg-yellow-50 border border-yellow-300 text-yellow-700 text-sm rounded-lg px-4 py-2 shadow-sm flex items-center gap-2">
+            <span>⚠️</span>
+            <span>No upcoming accountability scheduled</span>
+          </div>
+        </div>
+      )}
+
+
+
+
+
 
       <StrictModeModal
         isOpen={isModalOpen}
