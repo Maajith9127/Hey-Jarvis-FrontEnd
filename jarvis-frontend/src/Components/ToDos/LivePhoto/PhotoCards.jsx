@@ -29,24 +29,3 @@ const PhotoCard = ({ photo: photoid }) => {
 };
 
 export default PhotoCard;
-
-// import React from 'react';
-// import VerfiyList from './PhotoCardComponenents/VerfiyList.jsx';
-// import PhotoUpload from './PhotoCardComponenents/PhotoUpload.jsx';
-
-
-// const PhotoCard = ({ photo: photoid }) => {
-  
-//   return (
-//     <div className='flex flex-col  border bord  '>
-//       {/* PHOTO PLACE */}
-//       <div className='borde w-[100%] py-7 rounded-[25px] text-center'>
-//       <PhotoUpload photoid={photoid}/>
-//       <VerfiyList  photoid={photoid} />
-//       </div>
-
-//     </div>
-//   );
-// };
-
-// export default PhotoCard;

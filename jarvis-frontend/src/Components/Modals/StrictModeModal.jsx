@@ -1,6 +1,8 @@
-import React, { useState } from 'react';
 
-// --- Helper Component for the Time Picker ---
+import React, { useState } from 'react';
+import { activateStrictMode } from '../../services/strictModeService'; // ✅ axios-based call
+
+// --- Helper Component for Time Picker ---
 const CustomTimePicker = ({ hour, minute, period, setHour, setMinute, setPeriod }) => {
     const hourOptions = Array.from({ length: 12 }, (_, i) => String(i + 1).padStart(2, '0'));
     const minuteOptions = Array.from({ length: 60 }, (_, i) => String(i).padStart(2, '0'));
@@ -22,68 +24,34 @@ const CustomTimePicker = ({ hour, minute, period, setHour, setMinute, setPeriod 
     );
 };
 
-// --- Standalone Handler Logic ---
+// --- Handler Logic with Service Function ---
 const handleApplyClick = async (endDate, hour, minute, period, onApply, onClose) => {
     if (!endDate) {
         alert("Please select a date.");
         return;
     }
 
-    // Convert 12-hour format to a 24-hour string
     let hourIn24 = parseInt(hour, 10);
-    if (period === 'PM' && hourIn24 < 12) {
-        hourIn24 += 12;
-    }
-    if (period === 'AM' && hourIn24 === 12) { // Handle midnight case (12 AM is 00 hours)
-        hourIn24 = 0;
-    }
+    if (period === 'PM' && hourIn24 < 12) hourIn24 += 12;
+    if (period === 'AM' && hourIn24 === 12) hourIn24 = 0;
+
     const endTime = `${String(hourIn24).padStart(2, '0')}:${minute}`;
-
-    // Combine date and time into a single string
     const fullDateString = `${endDate}T${endTime}`;
-
-    // Create the new Date object
     const finalDate = new Date(fullDateString);
-
-    // Get the timestamp (milliseconds since January 1, 1970)
     const timestamp = finalDate.getTime();
 
-    // Log the final timestamp to the console
-    console.log(timestamp);
     try {
-        // Replace with your actual backend endpoint for setting strict mode.
-        // We use PATCH because we are updating the state of existing resources.
-        const response = await fetch("http://localhost:3000/SetStrictMode", {
-            method: "PATCH",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body:JSON.stringify({StrictMode:timestamp}),
-        });
-
-        // if (!response.ok) {
-        //     // If the server responds with an error status (like 400 or 500), throw an error.
-        //     const errorData = await response.json();
-        //     throw new Error(errorData.error || `HTTP error! Status: ${response.status}`);
-        // }
-
-        const result = await response.json();
+        const result = await activateStrictMode(timestamp); // ✅ uses axios
         console.log("✅ Strict Mode successfully set:", result);
-        alert("Strict Mode has been activated!"); // Optional: give user feedback
+        alert("Strict Mode has been activated!");
 
+        onApply?.(timestamp);
+        onClose?.();
     } catch (error) {
         console.error("❌ Failed to set Strict Mode:", error);
-
+        alert("Something went wrong. Please try again.");
     }
-
-
-
-
-    // --- Original logic can remain to keep functionality ---
-    // onApply({ endDate, endTime, timestamp }); // You could pass the timestamp too
-    // onClose();
 };
-
 
 // --- Main Modal Component ---
 const StrictModeModal = ({ isOpen, onClose, onApply }) => {
@@ -92,9 +60,7 @@ const StrictModeModal = ({ isOpen, onClose, onApply }) => {
     const [minute, setMinute] = useState('00');
     const [period, setPeriod] = useState('PM');
 
-    if (!isOpen) {
-        return null;
-    }
+    if (!isOpen) return null;
 
     return (
         <div className="fixed inset-0 bg-black/30 flex justify-center items-center z-50" onClick={onClose}>
@@ -124,7 +90,6 @@ const StrictModeModal = ({ isOpen, onClose, onApply }) => {
 
                 <div className="mt-6 flex justify-end gap-3">
                     <button onClick={onClose} className="px-4 py-2 bg-gray-200 rounded-md hover:bg-gray-300">Cancel</button>
-                    {/* The Apply button now calls the external function */}
                     <button
                         onClick={() => handleApplyClick(endDate, hour, minute, period, onApply, onClose)}
                         className="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700"

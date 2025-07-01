@@ -10,8 +10,10 @@ input {
 
 /* Calendar header */
 .fc-header-toolbar {
-  @apply px-6 py-4 flex justify-between items-center flex-wrap gap-3 mb-6 bg-white/60 backdrop-blur-md rounded-xl shadow-lg border border-slate-200/50;
+  @apply sticky top-0 z-30 w-full bg-slate-200 backdrop-blur-none m-0 p-0  ;
 }
+
+
 
 .fc-toolbar-title {
   @apply text-2xl font-semibold text-slate-800 tracking-tight;
@@ -19,7 +21,7 @@ input {
 
 /* Calendar buttons */
 .fc .fc-button {
-  @apply bg-gradient-to-r from-indigo-500 to-indigo-600 hover:from-indigo-600 hover:to-indigo-700 transition-all duration-300 text-white font-medium px-6 py-3 rounded-lg shadow-md hover:shadow-lg transform hover:-translate-y-0.5 border-0;
+  @apply bg-gradient-to-r from-indigo-500 to-indigo-600 hover:from-indigo-600 hover:to-indigo-700 transition-all duration-300 text-white font-medium shadow-md hover:shadow-lg transform hover:-translate-y-0.5;
 }
 
 .fc .fc-button-primary:not(:disabled).fc-button-active {
@@ -37,7 +39,7 @@ input {
 
 /* Calendar cells */
 .fc-daygrid-day-frame {
-  @apply transition-all duration-300 hover:bg-slate-50/80 hover:shadow-sm rounded-sm;
+  @apply transition-all duration-300 hover:bg-slate-50/80 hover:shadow-sm;
 }
 
 .fc-day-sat,
@@ -47,25 +49,25 @@ input {
 
 /* Events styling */
 .fc-h-event {
-  @apply bg-gradient-to-r from-blue-500 to-blue-600 border-l-4 border-blue-800 rounded-lg overflow-hidden shadow-md transition-all duration-300 hover:scale-105 hover:shadow-xl hover:from-blue-600 hover:to-blue-700 backdrop-blur-sm;
+  @apply bg-gradient-to-r from-black to-blue-600 border-l-4 border-blue-800 overflow-hidden shadow-md transition-all duration-300 hover:scale-105 hover:shadow-xl hover:from-blue-600 hover:to-blue-700 backdrop-blur-sm;
 }
 
 .fc-v-event {
-  @apply bg-gradient-to-b from-blue-500 to-blue-600 border-l-4 border-blue-800 rounded-lg overflow-hidden shadow-md transition-all duration-300 hover:shadow-xl hover:from-blue-600 hover:to-blue-700 backdrop-blur-sm;
+  @apply bg-gradient-to-b from-blue-500 to-blue-600 border-l-4 border-blue-800 overflow-hidden shadow-md transition-all duration-300 hover:shadow-xl hover:from-blue-600 hover:to-blue-700 backdrop-blur-sm;
 }
 
 .fc-event-title {
-  @apply font-medium px-3 py-2 text-white/95 tracking-wide;
+  @apply font-medium  text-white/95 tracking-wide;
 }
 
 /* Calendar body */
 .fc-view {
-  @apply w-full bg-white/70 backdrop-blur-md rounded-xl shadow-xl border border-slate-200/50 overflow-hidden;
+  @apply w-full bg-white ;
   height: auto !important;
 }
 
 .fc-scrollgrid-sync-table {
-  @apply w-full;
+  @apply w-full ;
 }
 
 /* Draggable elements */
@@ -139,7 +141,7 @@ input {
   @apply bg-gradient-to-r from-red-500 to-red-600 border-l-4 border-red-800 text-white shadow-md hover:from-red-600 hover:to-red-700;
 }
 
-.fc .fc-timegrid-slot {
+/* .fc .fc-timegrid-slot {
   height: 2px !important;
   min-height: 2px !important;
   max-height: 2px !important;
@@ -147,7 +149,7 @@ input {
   margin: 0 !important;
   line-height: 1 !important;
   background: linear-gradient(90deg, transparent 0%, rgba(148, 163, 184, 0.05) 50%, transparent 100%);
-}
+} */
 
 .fc .fc-timegrid-slot:nth-child(5n) {
   background: linear-gradient(90deg, transparent 0%, rgba(148, 163, 184, 0.1) 50%, transparent 100%);
@@ -240,7 +242,7 @@ input {
 
 .fc-scrollgrid {
   border: 1px solid rgba(148, 163, 184, 0.3) !important;
-  border-radius: 0.75rem !important;
+  
 }
 
 .fc-scrollgrid td,
@@ -326,9 +328,58 @@ input {
 
 /* Faded version for strict mode */
 .strict-mode {
-  @apply opacity-30  ;
+  @apply opacity-30;
 }
 
 
 
+/* Remove all gaps between toolbar and calendar body */
+.fc {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 0 !important;
+}
+
+.fc-header-toolbar {
+  @apply sticky top-0 z-30 w-full bg-slate-200 backdrop-blur-none;
+  margin: 0 !important;
+  padding: 0 !important;
+  margin-bottom: 0 !important;
+}
+
+.fc-view-harness {
+  margin: 0 !important;
+  padding: 0 !important;
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+}
+
+.fc-scrollgrid-section {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.fc-scrollgrid {
+  margin: 0 !important;
+  padding: 0 !important;
+  margin-top: 0 !important;
+}
+
+.fc-toolbar-chunk {
+  margin: 0 !important;
+}
+
+.fc-header-toolbar {
+  @apply sticky top-0 z-30 bg-slate-200 backdrop-blur-none m-0 p-0;
+  border-radius: 0 !important;
+}
+
+/* Also target any child elements that might have rounded corners */
+.fc-toolbar {
+  border-radius: 0 !important;
+}
+
+.fc-toolbar-chunk {
+  border-radius: 0 !important;
+}
 

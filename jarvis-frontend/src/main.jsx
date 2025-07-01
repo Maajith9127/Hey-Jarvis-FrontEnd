@@ -14,8 +14,6 @@ import Message from './Components/Accountability/Message/Message.jsx';
 
 import { Provider } from 'react-redux';
 import { store } from './ReduxToolkit/store.js';
-window.__STORE__ = store;
-
 
 createRoot(document.getElementById('root')).render(
   // <StrictMode>
