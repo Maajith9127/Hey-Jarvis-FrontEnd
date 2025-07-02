@@ -5,15 +5,13 @@
 }
 
 input {
-  @apply px-4 py-3 rounded-lg border border-slate-300 bg-white/80 backdrop-blur-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all duration-300 shadow-sm hover:shadow-md;
+  @apply px-4 py-3 rounded-lg border border-slate-300 bg-white/80 backdrop-blur-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 shadow-sm;
 }
 
 /* Calendar header */
 .fc-header-toolbar {
-  @apply sticky top-0 z-30 w-full bg-slate-200 backdrop-blur-none m-0 p-0  ;
+  @apply sticky top-0 z-30 w-full bg-slate-200 backdrop-blur-none m-0 p-0;
 }
-
-
 
 .fc-toolbar-title {
   @apply text-2xl font-semibold text-slate-800 tracking-tight;
@@ -21,7 +19,7 @@ input {
 
 /* Calendar buttons */
 .fc .fc-button {
-  @apply bg-gradient-to-r from-indigo-500 to-indigo-600 hover:from-indigo-600 hover:to-indigo-700 transition-all duration-300 text-white font-medium shadow-md hover:shadow-lg transform hover:-translate-y-0.5;
+  @apply bg-gradient-to-r from-indigo-500 to-indigo-600 hover:from-indigo-600 hover:to-indigo-700 text-white font-medium shadow-md;
 }
 
 .fc .fc-button-primary:not(:disabled).fc-button-active {
@@ -29,7 +27,7 @@ input {
 }
 
 .fc .fc-button-primary:disabled {
-  @apply bg-gradient-to-r from-indigo-300 to-indigo-400 opacity-60 cursor-not-allowed transform-none;
+  @apply bg-gradient-to-r from-indigo-300 to-indigo-400 opacity-60 cursor-not-allowed;
 }
 
 /* Today highlight */
@@ -39,7 +37,7 @@ input {
 
 /* Calendar cells */
 .fc-daygrid-day-frame {
-  @apply transition-all duration-300 hover:bg-slate-50/80 hover:shadow-sm;
+  @apply hover:bg-slate-50/80;
 }
 
 .fc-day-sat,
@@ -49,25 +47,25 @@ input {
 
 /* Events styling */
 .fc-h-event {
-  @apply bg-gradient-to-r from-black to-blue-600 border-l-4 border-blue-800 overflow-hidden shadow-md transition-all duration-300 hover:scale-105 hover:shadow-xl hover:from-blue-600 hover:to-blue-700 backdrop-blur-sm;
+  @apply bg-gradient-to-r from-black to-blue-600 border-l-4 border-blue-800 overflow-hidden shadow-md hover:from-blue-600 hover:to-blue-700 backdrop-blur-sm;
 }
 
 .fc-v-event {
-  @apply bg-gradient-to-b from-blue-500 to-blue-600 border-l-4 border-blue-800 overflow-hidden shadow-md transition-all duration-300 hover:shadow-xl hover:from-blue-600 hover:to-blue-700 backdrop-blur-sm;
+  @apply bg-gradient-to-b from-blue-500 to-blue-600 border-l-4 border-blue-800 overflow-hidden shadow-md hover:from-blue-600 hover:to-blue-700 backdrop-blur-sm;
 }
 
 .fc-event-title {
-  @apply font-medium  text-white/95 tracking-wide;
+  @apply font-medium text-white/95 tracking-wide;
 }
 
 /* Calendar body */
 .fc-view {
-  @apply w-full bg-white ;
+  @apply w-full bg-white;
   height: auto !important;
 }
 
 .fc-scrollgrid-sync-table {
-  @apply w-full ;
+  @apply w-full;
 }
 
 /* Draggable elements */
@@ -80,27 +78,10 @@ input {
 }
 
 .aaa {
-  @apply border-l-4 border-blue-800 bg-gradient-to-r from-blue-500 to-indigo-600 text-white mt-3 p-3 rounded-lg shadow-md transition-all duration-300 hover:shadow-lg hover:from-blue-600 hover:to-indigo-700 cursor-grab transform hover:-translate-y-1 hover:scale-[1.02];
+  @apply border-l-4 border-blue-800 bg-gradient-to-r from-blue-500 to-indigo-600 text-white mt-3 p-3 rounded-lg shadow-md hover:from-blue-600 hover:to-indigo-700 cursor-grab;
 }
 
-/* Enhanced animations */
-@keyframes slideInUp {
-  from {
-    opacity: 0;
-    transform: translateY(20px) scale(0.95);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-  }
-}
-
-.fc-event-main {
-  animation: slideInUp 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-/* Enhanced scrollbar */
+/* Basic scrollbar */
 ::-webkit-scrollbar {
   width: 8px;
   height: 8px;
@@ -112,14 +93,11 @@ input {
 }
 
 ::-webkit-scrollbar-thumb {
-
   border-radius: 12px;
-  transition: all 0.3s ease;
 }
 
 ::-webkit-scrollbar-thumb:hover {
   background: linear-gradient(135deg, #4f46e5, #4338ca);
-  box-shadow: 0 2px 8px rgba(99, 102, 241, 0.3);
 }
 
 ::-webkit-scrollbar-thumb:active {
@@ -128,28 +106,16 @@ input {
 
 .ScrollBar_Elements {
   cursor: grab;
-  transition: all 0.3s ease;
 }
 
 .ScrollBar_Elements:active {
   cursor: grabbing;
-  transform: scale(0.98);
 }
 
 /* Accountability events */
 .accountability-event {
   @apply bg-gradient-to-r from-red-500 to-red-600 border-l-4 border-red-800 text-white shadow-md hover:from-red-600 hover:to-red-700;
 }
-
-/* .fc .fc-timegrid-slot {
-  height: 2px !important;
-  min-height: 2px !important;
-  max-height: 2px !important;
-  padding: 0 !important;
-  margin: 0 !important;
-  line-height: 1 !important;
-  background: linear-gradient(90deg, transparent 0%, rgba(148, 163, 184, 0.05) 50%, transparent 100%);
-} */
 
 .fc .fc-timegrid-slot:nth-child(5n) {
   background: linear-gradient(90deg, transparent 0%, rgba(148, 163, 184, 0.1) 50%, transparent 100%);
@@ -231,9 +197,9 @@ input {
   }
 }
 
-/* Additional professional touches */
+/* Basic styling */
 .fc-daygrid-day-number {
-  @apply text-slate-700 font-medium transition-colors duration-200 hover:text-indigo-600;
+  @apply text-slate-700 font-medium hover:text-indigo-600;
 }
 
 .fc-col-header-cell {
@@ -242,7 +208,6 @@ input {
 
 .fc-scrollgrid {
   border: 1px solid rgba(148, 163, 184, 0.3) !important;
-  
 }
 
 .fc-scrollgrid td,
@@ -250,46 +215,8 @@ input {
   border-color: rgba(148, 163, 184, 0.2) !important;
 }
 
-/* Subtle hover effects */
-.fc-view:hover {
-  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
-  transform: translateY(-1px);
-  transition: all 0.3s ease;
-}
-
-.fc-button:hover {
-  box-shadow: 0 8px 25px -5px rgba(99, 102, 241, 0.4);
-}
-
-/* Glass morphism effects */
-.fc-header-toolbar::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
-  border-radius: inherit;
-  pointer-events: none;
-}
-
-.fc-view::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
-  border-radius: inherit;
-  pointer-events: none;
-  z-index: 1;
-}
-
 .Scrollbar {
   max-height: 150px;
-  /* or whatever height works */
   overflow-y: auto;
   padding-right: 4px;
 }
@@ -301,7 +228,6 @@ input {
 
 .Scrollbar::-webkit-scrollbar-thumb {
   background-color: #a5b4fc;
-  /* Tailwind's indigo-300 */
   border-radius: 8px;
 }
 
@@ -330,8 +256,6 @@ input {
 .strict-mode {
   @apply opacity-30;
 }
-
-
 
 /* Remove all gaps between toolbar and calendar body */
 .fc {
@@ -382,4 +306,3 @@ input {
 .fc-toolbar-chunk {
   border-radius: 0 !important;
 }
-
