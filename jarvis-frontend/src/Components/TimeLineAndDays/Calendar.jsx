@@ -3,7 +3,6 @@ import FullCalendar from "@fullcalendar/react";
 import dayGridPlugin from "@fullcalendar/daygrid";
 import interactionPlugin from "@fullcalendar/interaction";
 import timeGridPlugin from "@fullcalendar/timegrid";
-import useCalendarScrollPersistence from "../../hooks/useCalendarScrollPersistence.js.js";
 
 import { useDispatch, useSelector } from 'react-redux';
 import {
@@ -48,8 +47,7 @@ const Calendarr = () => {
     const dispatch = useDispatch();
     const allEvents = useSelector((state) => state.calendar.CalendarEvents);
     const calendarRef = useRef();
-    useCalendarScrollPersistence();
-
+  
 
     const handleDrop = (info) => {
         const startTime = new Date(info.event.start);
@@ -143,8 +141,8 @@ const Calendarr = () => {
             selectable={true}
             selectMirror={true}
             eventOverlap={true}
-            initialView={storedView}        // 👈 Use saved view
-            initialDate={storedDate}        // 👈 Use saved date
+            initialView={storedView}        
+            initialDate={storedDate}        
             datesSet={handleDatesSet}
             eventClassNames={getEventClassNames}
             events={allEvents}
@@ -154,9 +152,8 @@ const Calendarr = () => {
             eventResizableFromStart={true}
             eventDurationEditable={true}
             eventClick={handleDelete}
-            drop={(info) => console.log("Drop detected:", info)}
-        // height="auto"
-        // contentHeight="auto"
+            // drop={(info) => console.log("Drop detected:", info)}
+      
 
 
         />
