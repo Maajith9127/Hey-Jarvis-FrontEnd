@@ -2,7 +2,15 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import Scrollbar from '../Scrollbar/Scrollbar';
 
-// Reusable AccountabilityItem component (now styled like ToDoItem)
+// ✅ Import SVG assets properly
+import dollarIcon from '../../assets/Dollar.svg';
+import messageIcon from '../../assets/message.svg';
+import pictureIcon from '../../assets/picture.svg';
+import videoIcon from '../../assets/video.svg';
+import partnerIcon from '../../assets/partner.svg';
+import scrollIcon from '../../assets/scroll.svg';
+
+// Reusable AccountabilityItem component
 const AccountabilityItem = ({ title, imageSrc }) => {
     const [scroll, setscroll] = useState(true);
     const [key, setkey] = useState("");
@@ -48,7 +56,7 @@ const AccountabilityItem = ({ title, imageSrc }) => {
                 <img
                     onClick={scrolldown}
                     key={title}
-                    src="src/assets/scroll.svg"
+                    src={scrollIcon}
                     width="60"
                     alt="Toggle"
                     className="hover:scale-105 transition-transform"
@@ -61,11 +69,11 @@ const AccountabilityItem = ({ title, imageSrc }) => {
 const Accountability = () => {
     return (
         <div className="Accountability-Draggable-Elements borde bg-slate-200 rounded min-h-[100%] flex flex-row overflow-x-auto md:flex-col md:h-auto justify-start md:justify-center items-center md:px-0">
-            <AccountabilityItem title="PAYMENT" imageSrc="src/assets/Dollar.svg" />
-            <AccountabilityItem title="MESSAGE" imageSrc="src/assets/message.svg" />
-            <AccountabilityItem title="PICTURE" imageSrc="src/assets/picture.svg" />
-            <AccountabilityItem title="VIDEO" imageSrc="src/assets/video.svg" />
-            <AccountabilityItem title="ACCOUNTABILITY PARTNER" imageSrc="src/assets/partner.svg" />
+            <AccountabilityItem title="PAYMENT" imageSrc={dollarIcon} />
+            <AccountabilityItem title="MESSAGE" imageSrc={messageIcon} />
+            <AccountabilityItem title="PICTURE" imageSrc={pictureIcon} />
+            <AccountabilityItem title="VIDEO" imageSrc={videoIcon} />
+            <AccountabilityItem title="ACCOUNTABILITY PARTNER" imageSrc={partnerIcon} />
         </div>
     );
 };

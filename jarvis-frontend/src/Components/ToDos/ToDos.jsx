@@ -2,6 +2,14 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import Scrollbar from '../Scrollbar/Scrollbar';
 
+// ✅ Import all images properly
+import locationIcon from '../../assets/location.svg';
+import mediaIcon from '../../assets/media.svg';
+import wakeIcon from '../../assets/wake.svg';
+import websiteIcon from '../../assets/website.svg';
+import appsIcon from '../../assets/apps.svg';
+import scrollIcon from '../../assets/scroll.svg';
+
 // Reusable ToDoItem component
 const ToDoItem = ({ title, imageSrc }) => {
     const [scroll, setscroll] = useState(true);
@@ -20,9 +28,9 @@ const ToDoItem = ({ title, imageSrc }) => {
     };
 
     return (
-        <div className="Todos flex items-center justify-between w-[90%] md:w-[90%] px-4  md:px-5 md:py-6 rounded border border-gray-300 bg-white shadow-sm hover:shadow-lg transition-all duration-300 flex-shrink-0 relative">
+        <div className="Todos flex items-center justify-between w-[90%] md:w-[90%] px-4 md:px-5 md:py-6 rounded border border-gray-300 bg-white shadow-sm hover:shadow-lg transition-all duration-300 flex-shrink-0 relative">
             <Scrollbar className="Scrollbar" hidden={scroll} title={key} />
-        
+
             {/* Left: Icon + Title */}
             <div className="flex items-center gap-4">
                 {imageSrc && (
@@ -48,7 +56,7 @@ const ToDoItem = ({ title, imageSrc }) => {
                 <img
                     onClick={scrolldown}
                     key={title}
-                    src="src/assets/scroll.svg"
+                    src={scrollIcon}
                     width="60"
                     alt="Toggle"
                     className="hover:scale-105 transition-transform"
@@ -60,12 +68,12 @@ const ToDoItem = ({ title, imageSrc }) => {
 
 const ToDos = () => {
     return (
-        <div className="Todo-Draggable-Elements borde bg-slate-200  rounded min-h-[100%] flex flex-row overflow-x-auto md:flex-col md:h-auto justify-start md:justify-center items-center  md:px-0">
-            <ToDoItem title="LIVE PHOTO" imageSrc="src/assets/location.svg" />
-            <ToDoItem title="LIVE VIDEO" imageSrc="src/assets/media.svg" />
-            <ToDoItem title="KEEP ME AWAKE" imageSrc="src/assets/wake.svg" />
-            <ToDoItem title="WEB BLOCKING" imageSrc="src/assets/website.svg" />
-            <ToDoItem title="APP BLOCKING" imageSrc="src/assets/apps.svg" />
+        <div className="Todo-Draggable-Elements borde bg-slate-200 rounded min-h-[100%] flex flex-row overflow-x-auto md:flex-col md:h-auto justify-start md:justify-center items-center md:px-0">
+            <ToDoItem title="LIVE PHOTO" imageSrc={locationIcon} />
+            <ToDoItem title="LIVE VIDEO" imageSrc={mediaIcon} />
+            <ToDoItem title="KEEP ME AWAKE" imageSrc={wakeIcon} />
+            <ToDoItem title="WEB BLOCKING" imageSrc={websiteIcon} />
+            <ToDoItem title="APP BLOCKING" imageSrc={appsIcon} />
         </div>
     );
 };
