@@ -6,7 +6,7 @@ const useCalendarScrollPersistence = () => {
     const maxAttempts = 10;
 
     const interval = setInterval(() => {
-      // 👇 Dynamically find the vertical scroll container
+      //  Dynamically find the vertical scroll container
       const scrollContainer = document.querySelector(
         ".fc-timegrid-body .fc-scroller" // this is usually the vertical scroller inside timeGrid view
       );
@@ -15,7 +15,7 @@ const useCalendarScrollPersistence = () => {
         const savedScroll = localStorage.getItem("calendarScrollY");
         if (savedScroll) {
           scrollContainer.scrollTop = parseInt(savedScroll);
-          console.log("✅ Scroll restored:", savedScroll);
+          console.log(" Scroll restored:", savedScroll);
         }
 
         scrollContainer.addEventListener("scroll", () => {
@@ -28,7 +28,7 @@ const useCalendarScrollPersistence = () => {
       attempts++;
       if (attempts > maxAttempts) {
         clearInterval(interval);
-        console.warn("❌ Scroll container not found");
+        console.warn("Scroll container not found");
       }
     }, 300);
 

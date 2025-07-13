@@ -68,49 +68,27 @@ const Photo = () => {
     dispatch(UpdatePhotoFromRedux({ id, newName: value }));
   };
 
-  // const SavePhoto = async () => {
-  //   console.log("📝 Saving delta...");
-  //   if (isSavingPhoto) return;
-  //   setIsSavingPhoto(true);
-  //   const payload = { added, updated, deleted };
-
-  //   try {
-  //     const res = await saveLivePhotos(payload);
-  //     console.log("✅ Delta save successful:", res.data);
-  //     dispatch(ClearPhotoDeltas());
-  //   } catch (err) {
-  //     console.error("❌ Save request failed:", err.response?.data || err.message);
-  //   } finally {
-  //     setIsSavingPhoto(false);
-  //   }
-  // };
-
-
-
   const SavePhoto = async () => {
-    console.log("📝 Saving delta...");
+    console.log(" Saving delta...");
     if (isSavingPhoto) return;
     setIsSavingPhoto(true);
     const payload = { added, updated, deleted };
 
     try {
       const res = await saveLivePhotos(payload);
-      console.log("✅ Delta save successful:", res.data);
+      console.log(" Delta save successful:", res.data);
 
-      toast.success(res?.data?.message || "✅ Photos saved successfully!");
+      toast.success(res?.data?.message || " Photos saved successfully!");
       dispatch(ClearPhotoDeltas());
     } catch (err) {
-      console.error("❌ Save request failed:", err.response?.data || err.message);
+      console.error(" Save request failed:", err.response?.data || err.message);
 
       const errorMsg = err?.response?.data?.error || err?.message || "Something went wrong while saving.";
-      toast.error(`❌ ${errorMsg}`);
+      toast.error(` ${errorMsg}`);
     } finally {
       setIsSavingPhoto(false);
     }
   };
-
-
-
   return (
     <>
       <Challenge />

@@ -11,6 +11,8 @@ import AppBlocking from './Components/ToDos/AppBlocking/AppBlocking.jsx';
 import LiveVideo from './Components/ToDos/LiveVideo/LiveVideo.jsx';
 
 import Message from './Components/Accountability/Message/Message.jsx';
+import Payment from './Components/Accountability/Payment/Payment.jsx';
+
 
 import { Provider } from 'react-redux';
 import { store } from './ReduxToolkit/store.js';
@@ -28,7 +30,8 @@ createRoot(document.getElementById('root')).render(
         <Route path="/appblocking" element={<AppBlocking/>} />
         <Route path="/LiveVideo" element={<LiveVideo/>} /> 
         {/* Accountability   */}
-        <Route path='/message'  element={<Message/>}  />     
+        <Route path='/message'  element={<Message/>}  />  
+        <Route path='/payment' element={<Payment/>}/>   
       </Routes>
   </Router>
   </Provider>

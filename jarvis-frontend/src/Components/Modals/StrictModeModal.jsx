@@ -42,7 +42,7 @@ const handleApplyClick = async (endDate, hour, minute, period, onApply, onClose)
 
     try {
         const result = await activateStrictMode(timestamp); // ✅ uses axios
-        console.log("✅ Strict Mode successfully set:", result);
+        console.log(" Strict Mode successfully set:", result);
         alert("Strict Mode has been activated!");
 
         onApply?.(timestamp);

@@ -46,7 +46,7 @@ const MessageSlice = createSlice({
 
         const inAdded = state.added.find(msg => msg.AccountabilityId === AccountabilityIdToUpdate);
         if (inAdded) {
-          inAdded.message = newValue; // ✅ Update inside added[]
+          inAdded.message = newValue; // Update inside added[]
         } else {
           const index = state.updated.findIndex(msg => msg.AccountabilityId === AccountabilityIdToUpdate);
           if (index === -1) {
@@ -67,7 +67,7 @@ const MessageSlice = createSlice({
 
         const inAdded = state.added.find(msg => msg.AccountabilityId === AccountabilityIdToUpdate);
         if (inAdded) {
-          inAdded.ToAddress = newValue; // ✅ Update inside added[]
+          inAdded.ToAddress = newValue; //  Update inside added[]
         } else {
           const index = state.updated.findIndex(msg => msg.AccountabilityId === AccountabilityIdToUpdate);
           if (index === -1) {

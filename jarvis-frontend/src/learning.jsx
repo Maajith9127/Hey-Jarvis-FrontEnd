@@ -10,5 +10,4 @@ const learning = () => {
     </div>
   )
 }
-
 export default learning

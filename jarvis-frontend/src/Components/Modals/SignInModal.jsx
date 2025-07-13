@@ -24,7 +24,7 @@ const SignInModal = ({ isOpen, onClose }) => {
         }
       } catch {
         setIsLoggedIn(false);
-        console.log("⛔ Not authenticated");
+        console.log(" Not authenticated");
       }
     };
 

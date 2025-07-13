@@ -6,7 +6,7 @@ export const getAllDataFromServer = async () => {
     const res = await axiosInstance.get('/GetAll');
     return res.data; // { Accountability, Calendar, LivePhotos }
   } catch (err) {
-    console.error("❌ Failed to fetch all data:", err);
+    console.error("Failed to fetch all data:", err);
     throw err;
   }
 };

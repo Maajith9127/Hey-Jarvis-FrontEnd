@@ -11,7 +11,7 @@ const LocationModal = ({ isOpen, onClose }) => {
             alert("📍 Location saved: " + res.data.location);
             onClose();
         } catch (err) {
-            console.error("❌ Failed to update location", err);
+            console.error(" Failed to update location", err);
         }
     };
 

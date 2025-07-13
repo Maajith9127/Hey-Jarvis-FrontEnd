@@ -83,8 +83,8 @@ const PhotoUpload = ({ photoid }) => {
           onClick={UploadPhoto}
           disabled={!File || isUploading}
           className={`inline-flex items-center gap-2 py-2.5 px-6 rounded-lg font-medium transition-all duration-200 ${File && !isUploading
-              ? 'bg-blue-600 hover:bg-blue-700 text-white shadow-sm hover:shadow-md'
-              : 'bg-gray-300 text-gray-500 cursor-not-allowed'
+            ? 'bg-blue-600 hover:bg-blue-700 text-white shadow-sm hover:shadow-md'
+            : 'bg-gray-300 text-gray-500 cursor-not-allowed'
             }`}
         >
           {isUploading ? (

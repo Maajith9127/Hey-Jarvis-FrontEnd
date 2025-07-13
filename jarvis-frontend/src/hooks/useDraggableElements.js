@@ -3,7 +3,7 @@ import { Draggable } from '@fullcalendar/interaction';
 import { v4 as uuidv4 } from 'uuid';
 
 const useDraggableElements = () => {
-    // 🟦 For Todos
+    //  For Todos
     useEffect(() => {
         const TODO_DRAGGABLES = document.querySelector(".Todo-Draggable-Elements");
 
@@ -35,7 +35,7 @@ const useDraggableElements = () => {
         return () => observer.disconnect();
     }, []);
 
-    // 🟥 For Accountabilities
+    //  For Accountabilities
     useEffect(() => {
         const ACCOUNTABILITY_DRAGGABLES = document.querySelector(".Accountability-Draggable-Elements");
 

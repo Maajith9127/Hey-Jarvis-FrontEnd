@@ -1,6 +1,6 @@
 // src/services/calendarService.js
 
-import axiosInstance from "./axiosInstance"; // ✅ import your configured axios instance
+import axiosInstance from "./axiosInstance"; //import your configured axios instance
 
 export const saveAllCalendarData = async (payload) => {
   try {
@@ -8,7 +8,7 @@ export const saveAllCalendarData = async (payload) => {
     return res.data; //  successful response
   } catch (err) {
     console.error(" saveAllCalendarData failed:", err);
-    throw err; // 🔁 propagate to UI
+    throw err; //  propagate to UI
   }
 };
 
@@ -26,7 +26,7 @@ export const getAccountabilitiesInCollisionWithTodo = async ({ TodoId, SpecificE
     });
     return res.data.OtherAccountabilitiesInCollisionWith || [];
   } catch (err) {
-    console.error("❌ getAccountabilitiesInCollisionWithTodo failed:", err);
+    console.error("getAccountabilitiesInCollisionWithTodo failed:", err);
     throw new Error("Failed to fetch accountability collisions");
   }
 };

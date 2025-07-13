@@ -2,7 +2,7 @@
 
 import React from 'react';
 
-// 📷 Camera Icon Component
+//  Camera Icon Component
 export const CameraIcon = () => (
     <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none"
         viewBox="0 0 24 24" stroke="currentColor">
@@ -13,7 +13,7 @@ export const CameraIcon = () => (
     </svg>
 );
 
-// ✅ Header Section with Save button spinner
+// Header Section with Save button spinner
 const HeaderSection = ({ onAddPhoto, onSavePhoto, isSavingPhoto }) => {
     return (
         <div className='px-10 py-7 border bg-white border-slate-200 flex items-center justify-between'>

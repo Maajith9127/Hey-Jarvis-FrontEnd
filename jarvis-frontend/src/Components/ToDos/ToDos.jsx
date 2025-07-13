@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import Scrollbar from '../Scrollbar/Scrollbar';
 
-// ✅ Import all images properly
+//Import all images properly
 import locationIcon from '../../assets/location.svg';
 import mediaIcon from '../../assets/media.svg';
 import wakeIcon from '../../assets/wake.svg';

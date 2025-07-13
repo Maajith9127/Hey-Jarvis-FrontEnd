@@ -12,7 +12,7 @@ const useFetchAllData = () => {
     const FetchAllData = async () => {
       try {
         const data = await getAllDataFromServer();
-        console.log("📥 All data fetched from server:", data);
+        console.log(" All data fetched from server:", data);
 
         const accountabilityMessages = data?.Accountability || [];
         const livePhotos = data?.LivePhotos || [];

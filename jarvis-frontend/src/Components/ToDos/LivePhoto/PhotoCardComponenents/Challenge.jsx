@@ -139,7 +139,7 @@ const Challenge = () => {
                     {/* Challenge Generator */}
                     <button
                         onClick={GenerateChallenge}
-                        disabled={timerRunning} // 🧠 blocks when timer is running
+                        disabled={timerRunning} //  blocks when timer is running
                         className={`w-full py-3 px-6 rounded-lg font-medium transition-colors duration-200 
         ${timerRunning
                                 ? 'bg-gray-300 text-gray-500 cursor-not-allowed'
