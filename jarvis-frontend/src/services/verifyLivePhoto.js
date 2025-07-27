@@ -1,9 +1,10 @@
 import axiosInstance from "./axiosInstance";
 
-export const generateChallenge = async ({ TodoId, collection }) => {
+export const generateChallenge = async ({ TodoId, collection,Accountability }) => {
     const res = await axiosInstance.post("/apiLivePhotoVerfication/ChallengeGenerate", {
         TodoId,
         collection,
+        Accountability
     });
     return res.data;
 };

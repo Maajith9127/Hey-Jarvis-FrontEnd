@@ -1,80 +1,3 @@
-// import { createSlice } from '@reduxjs/toolkit';
-
-// const initialState = {
-//   Payouts: [],
-//   added: [],
-//   updated: [],
-//   deleted: []
-// };
-
-// const payoutSlice = createSlice({
-//   name: 'payout',
-//   initialState,
-//   reducers: {
-//     AddPayoutToRedux: (state, action) => {
-//       const { fromDb, ...entry } = action.payload;
-//       const exists = state.Payouts.some(p => p.id === entry.id);
-//       if (!exists) {
-//         state.Payouts.push({ ...entry, fromDb: !!fromDb });
-//         if (!fromDb) state.added.push(entry);
-//       }
-//     },
-//     DeletePayoutFromRedux: (state, action) => {
-//       const id = action.payload;
-//       state.Payouts = state.Payouts.filter(p => p.id !== id);
-
-//       const wasAdded = state.added.find(p => p.id === id);
-//       if (wasAdded) {
-//         state.added = state.added.filter(p => p.id !== id);
-//       } else {
-//         state.updated = state.updated.filter(p => p.id !== id);
-//         state.deleted.push(id);
-//       }
-//     },
-//     UpdatePayoutFromRedux: (state, action) => {
-//       const { id, key, value } = action.payload;
-//       const item = state.Payouts.find(p => p.id === id);
-//       if (item) {
-//         item[key] = value;
-
-//         const addedItem = state.added.find(p => p.id === id);
-//         if (addedItem) {
-//           addedItem[key] = value;
-//         } else {
-//           const existingUpdate = state.updated.find(p => p.id === id);
-//           if (existingUpdate) {
-//             existingUpdate[key] = value;
-//           } else {
-//             state.updated.push({ id, [key]: value });
-//           }
-//         }
-//       }
-//     },
-//     ClearPayoutDeltas: (state) => {
-//       state.added = [];
-//       state.updated = [];
-//       state.deleted = [];
-//     },
-//     RebuildAddedFromPayouts: (state) => {
-//       const addedMap = new Map(state.added.map(p => [p.id, true]));
-//       const missing = state.Payouts.filter(p => !p.fromDb && !addedMap.has(p.id));
-//       state.added.push(...missing);
-//     }
-//   }
-// });
-
-// export const {
-//   AddPayoutToRedux,
-//   DeletePayoutFromRedux,
-//   UpdatePayoutFromRedux,
-//   ClearPayoutDeltas,
-//   RebuildAddedFromPayouts
-// } = payoutSlice.actions;
-
-// export default payoutSlice.reducer;
-
-
-
 
 import { createSlice } from '@reduxjs/toolkit';
 
@@ -91,7 +14,12 @@ const PayoutSlice = createSlice({
     reducers: {
         AddPayoutToRedux: (state, action) => {
             // logic to be added later
+            //i meant to say add and if  here to check if it exists and then proceed
             const newPayout = action.payload;
+            const exists = state.Payouts.some(
+                (p) => p.AccountabilityId === newPayout.AccountabilityId
+            );
+            if (exists) return;
             state.Payouts.push(newPayout);
             state.added.push(newPayout);
         },

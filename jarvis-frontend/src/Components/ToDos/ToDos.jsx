@@ -70,8 +70,8 @@ const ToDos = () => {
     return (
         <div className="Todo-Draggable-Elements borde bg-slate-200 rounded min-h-[100%] flex flex-row overflow-x-auto md:flex-col md:h-auto justify-start md:justify-center items-center md:px-0">
             <ToDoItem title="LIVE PHOTO" imageSrc={locationIcon} />
+            <ToDoItem title="RANDOMISED" imageSrc={wakeIcon} />
             <ToDoItem title="LIVE VIDEO" imageSrc={mediaIcon} />
-            <ToDoItem title="KEEP ME AWAKE" imageSrc={wakeIcon} />
             <ToDoItem title="WEB BLOCKING" imageSrc={websiteIcon} />
             <ToDoItem title="APP BLOCKING" imageSrc={appsIcon} />
         </div>

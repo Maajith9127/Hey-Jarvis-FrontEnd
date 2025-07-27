@@ -16,12 +16,12 @@ export const useUpcomingTodoEvents = (photoId, limit = 1) => {
       //  If we get fewer items than limit, no more items
       if (data.length < limit) setHasMore(false);
 
-      // 📌 Append if loadMore, replace otherwise
+      //Append if loadMore, replace otherwise
       setEvents(prev =>
         isLoadMore ? [...prev, ...data] : data
       );
     } catch (err) {
-      console.error("❌ useUpcomingTodoEvents error", err);
+      console.error("useUpcomingTodoEvents error", err);
       setError(err);
     } finally {
       setLoading(false);

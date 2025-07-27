@@ -12,6 +12,7 @@ const useDraggableElements = () => {
                 itemSelector: ".ScrollBar_Elements",
                 eventData: (element) => {
                     const collectionType = element.getAttribute("data-collectiontype");
+                    console.log(collectionType)
                     const todoId = element.getAttribute("data-id");
 
                     return {

@@ -125,6 +125,10 @@ input {
   @apply bg-gradient-to-r from-green-500 to-green-600 border-green-800 hover:from-green-600 hover:to-green-700;
 }
 
+.randomised-accountability {
+  @apply bg-gradient-to-r   border-red-600 border-b-0 border-r-0 border-t-0 text-white shadow-md ;
+}
+
 /* Enhanced mobile responsiveness */
 @media (max-width: 480px) {
   .fc .fc-toolbar {

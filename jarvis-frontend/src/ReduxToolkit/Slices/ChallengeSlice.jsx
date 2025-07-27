@@ -4,6 +4,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
   data: null,
   open: false,
+  accountability: null,
 };
 
 const challengeSlice = createSlice({
@@ -19,9 +20,13 @@ const challengeSlice = createSlice({
         state.open = false;
       }
     },
+    setSelectedAccountability: (state, action) => {
+      state.accountability = action.payload;
+    },
+
 
   },
 });
 
-export const { setChallengeData } = challengeSlice.actions;
+export const { setChallengeData,setSelectedAccountability } = challengeSlice.actions;
 export default challengeSlice.reducer;

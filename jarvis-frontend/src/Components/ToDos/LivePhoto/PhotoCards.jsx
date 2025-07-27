@@ -11,7 +11,6 @@ const PhotoCard = ({ photo: photoid }) => {
       <div className='bg-gray-50 rounded-xl p-6 border-2 border-dashed border-gray-200 hover:border-gray-300 transition-colors duration-200'>
         <PhotoUpload photoid={photoid}/>
       </div>
-      
       {/* VERIFICATION EVENTS SECTION */}
       <div className='space-y-4'>
         <div className='flex items-center gap-2'>

@@ -114,7 +114,7 @@ const Message = () => {
           onClick={AddMessageToRedux}
           className="w-full sm:w-auto px-6 py-3 bg-indigo-600 hover:bg-indigo-700 text-white font-medium rounded-xl shadow-md transition"
         >
-          ➕ Add Message
+          Add Message
         </button>
 
         <button

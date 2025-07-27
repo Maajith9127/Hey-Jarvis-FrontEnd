@@ -5,7 +5,6 @@ import axios from './axiosInstance';
 export const saveLivePhotos = async ({ added, updated, deleted }) => {
   return axios.post('/apiPhotos/SaveLivePhotos', { added, updated, deleted });
 };
-
 // Fetch all photos
 export const fetchLivePhotos = async () => {
   return axios.get('/apiPhotos/GetLivePhotos');

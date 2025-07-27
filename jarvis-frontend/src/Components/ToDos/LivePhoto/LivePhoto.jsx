@@ -3,12 +3,15 @@ import React, { useState, useEffect } from 'react';
 import PhotoCard from './PhotoCards';
 import Challenge from './PhotoCardComponenents/Challenge.jsx';
 import HeaderSection from './PhotoCardComponenents/HelperFunctions/HeaderSection.jsx';
+import Randomised from '../Randomised/Randomised.jsx';
 
 import { v4 as uuidv4 } from 'uuid';
 import { useDispatch, useSelector } from 'react-redux';
 import { toast } from 'react-toastify';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { useLocation } from 'react-router-dom';
+
 
 
 import {
@@ -26,6 +29,12 @@ const Photo = () => {
   const dispatch = useDispatch();
   const [PhotosFromDb, setPhotosFromDb] = useState([]);
   const [isSavingPhoto, setIsSavingPhoto] = useState(false);
+  const location = useLocation();
+  const isRandomisedRoute = location.pathname === '/randomised';
+  console.log("Hey it is ", isRandomisedRoute)
+
+
+
 
   useEffect(() => {
     const fetchPhotos = async () => {
@@ -91,6 +100,8 @@ const Photo = () => {
   };
   return (
     <>
+
+
       <Challenge />
       <div className='min-h-screen bg-gray-50 px-6 py-8'>
         <HeaderSection
@@ -98,6 +109,10 @@ const Photo = () => {
           onSavePhoto={SavePhoto}
           isSavingPhoto={isSavingPhoto}
         />
+
+        {isRandomisedRoute && <Randomised/>}
+    
+
         <div className='max-w-4xl mx-auto mt-8'>
           <div className='space-y-6'>
             {photos.map((photo) => (

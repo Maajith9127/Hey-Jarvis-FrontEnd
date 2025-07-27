@@ -15,6 +15,8 @@ const Challenge = () => {
     const [timerRunning, setTimerRunning] = useState(false);
     const [verificationReason, setVerificationReason] = useState('');
     const [facingMode, setFacingMode] = useState("user");
+    const [generatingChallenge, setGeneratingChallenge] = useState(false);
+    const selectedAccountability = useSelector((state) => state.challenge.accountability);
 
     const webcamRef = useRef(null);
     const ChallengeData = useSelector((state) => state.challenge.data);
@@ -48,23 +50,27 @@ const Challenge = () => {
 
         try {
             const response = await verifyLivePhoto(payload);
-            console.log("📩 Verification response:", response);
+            console.log(" Verification response:", response);
             const raw = response?.verification || response?.reason || "No response from server.";
             setVerificationReason(raw);
         } catch (err) {
-            console.error("❌ Verification failed:", err);
+            console.error(" Verification failed:", err);
             const fallback = err?.response?.data?.error || "Verification failed due to a system error.";
             setVerificationReason(fallback);
         }
     };
 
     const GenerateChallenge = async () => {
+        console.log(selectedAccountability)
+
+        setGeneratingChallenge(true);
         if (!ChallengeData?.Todoid || !ChallengeData?.CollectionToCeck) return;
 
         try {
             const data = await generateChallenge({
                 TodoId: ChallengeData.Todoid,
                 collection: ChallengeData.CollectionToCeck,
+                Accountability: selectedAccountability,
             });
 
             setChallengeText(data.Challenge);
@@ -78,8 +84,17 @@ const Challenge = () => {
             setTimer(remaining);
             setTimerRunning(true);
         } catch (err) {
-            console.error("❌ Challenge generation failed:", err);
+            const fallbackMessage =
+                err?.response?.data?.message ||
+                err?.response?.data?.error ||
+                "Challenge Generation Failed";
+
+            alert(fallbackMessage);  // ← shows clean message from backend
+            console.error(" Challenge generation failed:", err);
+        } finally {
+            setGeneratingChallenge(false);
         }
+
     };
 
     const CloseChallenge = () => {
@@ -139,7 +154,7 @@ const Challenge = () => {
                     {/* Challenge Generator */}
                     <button
                         onClick={GenerateChallenge}
-                        disabled={timerRunning} //  blocks when timer is running
+                        disabled={timerRunning || generatingChallenge} //  blocks when timer is running
                         className={`w-full py-3 px-6 rounded-lg font-medium transition-colors duration-200 
         ${timerRunning
                                 ? 'bg-gray-300 text-gray-500 cursor-not-allowed'

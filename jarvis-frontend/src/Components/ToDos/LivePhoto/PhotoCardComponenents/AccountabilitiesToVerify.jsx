@@ -3,8 +3,12 @@ import { useSelector } from 'react-redux';
 import { formatDateToAMPM } from './HelperFunctions/TimeFormatter';
 import { getBackgroundColor } from './HelperFunctions/TimeFormatter';
 import { getAccountabilitiesInCollisionWithTodo } from '../../../../services/calendarService';
+import { useDispatch } from 'react-redux';
+import { setSelectedAccountability } from '../../../../ReduxToolkit/Slices/ChallengeSlice.jsx';
 
 const AccountabilitiesToVerify = ({ onSelect }) => {
+    const dispatch = useDispatch();
+
     const [selectedId, setSelectedId] = useState(null);
     const [AccountabilitiesToVerify, setAccountabilitiesToVerify] = useState([]);
 
@@ -18,6 +22,7 @@ const AccountabilitiesToVerify = ({ onSelect }) => {
     const handleDoubleClick = (accId, accKey) => {
         setSelectedId(accId); // add highlight
         onSelect(accKey);
+        dispatch(setSelectedAccountability(accKey));
     };
 
     const Accountabilities = useSelector((state) => state.challenge.data);

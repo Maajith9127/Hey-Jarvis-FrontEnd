@@ -5,7 +5,6 @@ import './index.css'
 import App from './App.jsx'
 
 import Photo from './Components/ToDos/LivePhoto/LivePhoto.jsx';
-import KeepMeAwake from './Components/ToDos/KeepMeAwake/KeepMeAwake.jsx';
 import WebBlocking from './Components/ToDos/WebBlocking/WebBlocking.jsx';
 import AppBlocking from './Components/ToDos/AppBlocking/AppBlocking.jsx';
 import LiveVideo from './Components/ToDos/LiveVideo/LiveVideo.jsx';
@@ -20,20 +19,21 @@ import { store } from './ReduxToolkit/store.js';
 createRoot(document.getElementById('root')).render(
   // <StrictMode>
   <Provider store={store}>
-  <Router>
+    <Router>
       <Routes>
         {/* To Dos */}
         <Route path="/" element={<App />} />
         <Route path="/livephoto" element={<Photo />} />
-        <Route path="/keepmeawake" element={<KeepMeAwake/>} />
-        <Route path="/webblocking" element={<WebBlocking/>} />
-        <Route path="/appblocking" element={<AppBlocking/>} />
-        <Route path="/LiveVideo" element={<LiveVideo/>} /> 
+        <Route path="/randomised" element={<Photo />} />
+
+        <Route path="/webblocking" element={<WebBlocking />} />
+        <Route path="/appblocking" element={<AppBlocking />} />
+        <Route path="/LiveVideo" element={<LiveVideo />} />
         {/* Accountability   */}
-        <Route path='/message'  element={<Message/>}  />  
-        <Route path='/payment' element={<Payment/>}/>   
+        <Route path='/message' element={<Message />} />
+        <Route path='/payment' element={<Payment />} />
       </Routes>
-  </Router>
+    </Router>
   </Provider>
   // </StrictMode>,
 )

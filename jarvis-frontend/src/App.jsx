@@ -7,11 +7,13 @@ import useDraggableElements from './hooks/useDraggableElements.js';
 import useFetchAllData from './hooks/useFetchAllData.js';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { useSocket } from "./hooks/useSocket.js";
 
 function App() {
   const dispatch = useDispatch();
   useDraggableElements();
   useFetchAllData();
+  useSocket();
 
   return (
     <div className="flex flex-col min-h-screen   ">
