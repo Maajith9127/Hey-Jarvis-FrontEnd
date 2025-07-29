@@ -1,31 +1,3 @@
-// // src/hooks/usePayment.js
-// import { useEffect, useState } from 'react';
-// import { getPayoutBalance } from '../services/paymentService';
-
-// export const usePayoutBalance = () => {
-//   const [balance, setBalance] = useState(null);
-//   const [loading, setLoading] = useState(true);
-//   const [error, setError] = useState('');
-
-//   useEffect(() => {
-//     const fetchBalance = async () => {
-//       try {
-//         const res = await getPayoutBalance();
-//         setBalance(res?.availableBalance || '0.00');
-//       } catch (err) {
-//         console.error('Error fetching balance:', err);
-//         setError('Failed to load balance');
-//       } finally {
-//         setLoading(false);
-//       }
-//     };
-
-//     fetchBalance();
-//   }, []);
-
-//   return { balance, loading, error };
-// };
-
 
 import { useEffect, useState } from 'react';
 import { getPayoutBalance, getAllPayouts } from '../services/paymentService';
@@ -76,6 +48,33 @@ export const useFetchPayouts = () => {
     return fetchPayouts;
 };
 
+// export const useAutoLoadPayouts = () => {
+//     const dispatch = useDispatch();
+
+//     useEffect(() => {
+//         const fetchPayouts = async () => {
+//             try {
+//                 const entries = await getAllPayouts();
+
+//                 const cleanEntries = entries.map(entry => ({
+//                     ...entry,
+//                     fromDb: true
+//                 }));
+
+//                 dispatch(RebuildAddedFromPayouts(cleanEntries));
+//             } catch (err) {
+//                 console.error('Failed to fetch payouts:', err);
+//                 toast.error('Failed to load payouts from DB');
+//             }
+//         };
+//         fetchPayouts();
+//     }, [dispatch]); //  run once on mount
+// };
+
+
+
+
+
 export const useAutoLoadPayouts = () => {
     const dispatch = useDispatch();
 
@@ -84,12 +83,13 @@ export const useAutoLoadPayouts = () => {
             try {
                 const entries = await getAllPayouts();
 
-                const cleanEntries = entries.map(entry => ({
-                    ...entry,
-                    fromDb: true
-                }));
+                entries.forEach((entry) => {
+                    dispatch(AddPayoutToRedux({
+                        ...entry,
+                        fromDb: true
+                    }));
+                });
 
-                dispatch(RebuildAddedFromPayouts(cleanEntries));
             } catch (err) {
                 console.error('Failed to fetch payouts:', err);
                 toast.error('Failed to load payouts from DB');
@@ -97,5 +97,5 @@ export const useAutoLoadPayouts = () => {
         };
 
         fetchPayouts();
-    }, [dispatch]); //  run once on mount
+    }, [dispatch]); // runs only on mount
 };

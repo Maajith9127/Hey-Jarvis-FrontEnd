@@ -9,6 +9,14 @@ import { activateStrictMode } from '../../services/strictModeService';
 import { toast } from 'react-toastify';
 import { useDispatch, useSelector } from 'react-redux';
 import { toggleDeleteMode } from '../../ReduxToolkit/Slices/CalendarSlice.jsx';
+import {
+  setCopyMode,
+  setPasteMode,
+  clearCopyPaste,
+} from '../../ReduxToolkit/Slices/CopyPasteSlice';
+
+
+
 
 const CalendarControls = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -17,6 +25,9 @@ const CalendarControls = () => {
   const [showSignInModal, setShowSignInModal] = useState(false);
   const [isSaving, setIsSaving] = useState(false);
   const [lockedUntil, setLockedUntil] = useState(null);
+  const { mode, copiedEvents } = useSelector((state) => state.copyPaste);
+
+  console.log(mode)
 
   useEffect(() => {
     const updateFromLocal = () => {
@@ -70,6 +81,11 @@ const CalendarControls = () => {
       Photos: state.photo,
       CalendarEvents: state.calendar,
       AccountabilityMessages: state.message,
+      Payouts: {
+        added: state.payout.added,
+        updated: state.payout.updated,
+        deleted: state.payout.deleted
+      }
     };
 
     try {
@@ -79,7 +95,7 @@ const CalendarControls = () => {
       localStorage.setItem("nextScheduleTime", nextScheduleTime.toISOString()); // ✅ Store as string
       setNextScheduleTime(nextScheduleTime);
       toast.success(" All changes saved successfully!");
-      // window.location.reload(); //  Reload on save
+      window.location.reload(); //  Reload on save
     } catch (err) {
       console.error(" Sync failed:", err);
 
@@ -88,9 +104,12 @@ const CalendarControls = () => {
         const itemTypes = [...new Set(blockedItems.map(item => item.type))].join(", ");
         toast.error(` Strict Mode active! Blocked changes in: ${itemTypes}`);
       } else {
-        toast.error(err.response?.data?.error || "Unknown error occurred");
+
+        window.location.reload();
+        // toast.error(err.response?.data?.error || "Unknown error occurred");
       }
     } finally {
+      // toast.success(" All changes saved successfully!");
       setIsSaving(false);
     }
   };
@@ -110,9 +129,22 @@ const CalendarControls = () => {
       console.error("Failed to activate strict mode:", err);
     }
   };
+  const handleCopyPasteToggle = () => {
+    if (mode === 'off') {
+      dispatch(setCopyMode());
+
+    } else if (mode === 'copy') {
+      dispatch(setPasteMode())
+
+    } else if (mode === 'paste') {
+      dispatch(clearCopyPaste())
+
+
+    }
+  };
 
   return (
-    <div className="w-full mt-1 flex flex-wrap justify-center items-center gap-2 sticky top-0 z-50 bg-white">
+    <div className="w-full mt-1 flex flex-wrap justify-center items-center gap-1 sticky top-0 z-50 bg-white">
       <button
         className="bg-white border text-xs px-3 py-1.5 font-medium shadow-sm hover:bg-gray-100 transition whitespace-nowrap"
         onClick={() => setShowRepeatModal(true)}
@@ -144,6 +176,20 @@ const CalendarControls = () => {
       >
         SignIn
       </button>
+
+      <button
+        onClick={handleCopyPasteToggle}
+        className={`border text-xs px-3 py-1.5 font-medium shadow-sm transition whitespace-nowrap ${mode === 'copy'
+          ? 'bg-yellow-100 text-yellow-800'
+          : mode === 'paste'
+            ? 'bg-blue-100 text-blue-800'
+            : 'bg-white hover:bg-gray-100'
+          }`}
+      >
+        {mode === 'off' && 'Copy'}
+        {mode === 'copy' && `Copy (${copiedEvents.length})`}
+        {mode === 'paste' && 'Paste'}
+      </button>
       {/*  Delete Mode Toggle Button using Redux */}
       <button
         onClick={() => dispatch(toggleDeleteMode())}
@@ -152,6 +198,9 @@ const CalendarControls = () => {
       >
         {deleteMode ? "Delete" : "Delete"}
       </button>
+
+
+
 
       <div className='flex gap-1 justify-center items-center'>
         {nextScheduleTime ? (

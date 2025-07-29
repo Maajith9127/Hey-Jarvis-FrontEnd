@@ -2,7 +2,7 @@ import axios from './axiosInstance.js'; // your pre-configured axios with baseUR
 
 // CREATE
 export const createRandomisedSetting = async (data) => {
-    console.log('Ommaaala')
+    
     console.log(data);
     const res = await axios.post('/randomised/create', data);
     return res.data;

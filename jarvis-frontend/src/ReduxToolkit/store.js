@@ -4,7 +4,7 @@ import calendarReducer from './Slices/CalendarSlice';
 import MessageReducer from './Slices/MessageSlice.jsx'
 import challengeReducer from './Slices/ChallengeSlice';
 import PayoutReducer from './Slices/PayoutSlice.jsx';
-
+import copyPasteReducer from './Slices/CopyPasteSlice';
 
 export const store = configureStore({
     reducer: {
@@ -13,6 +13,7 @@ export const store = configureStore({
         message: MessageReducer,
         challenge: challengeReducer,
         payout: PayoutReducer,
+        copyPaste: copyPasteReducer,
     }
 })
 

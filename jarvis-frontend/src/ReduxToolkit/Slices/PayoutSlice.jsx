@@ -21,7 +21,11 @@ const PayoutSlice = createSlice({
             );
             if (exists) return;
             state.Payouts.push(newPayout);
-            state.added.push(newPayout);
+
+            if (!newPayout.fromDb) {
+                state.added.push(newPayout);
+            }
+
         },
         DeletePayoutFromRedux: (state, action) => {
             // logic to be added later
