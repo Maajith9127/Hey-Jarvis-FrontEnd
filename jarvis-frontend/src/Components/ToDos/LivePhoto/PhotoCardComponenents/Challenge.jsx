@@ -154,14 +154,19 @@ const Challenge = () => {
                     {/* Challenge Generator */}
                     <button
                         onClick={GenerateChallenge}
-                        disabled={timerRunning || generatingChallenge} //  blocks when timer is running
-                        className={`w-full py-3 px-6 rounded-lg font-medium transition-colors duration-200 
-        ${timerRunning
+                        disabled={timerRunning || generatingChallenge}
+                        className={`w-full py-3 px-6 rounded-lg font-medium transition-colors duration-200
+    ${(timerRunning || generatingChallenge)
                                 ? 'bg-gray-300 text-gray-500 cursor-not-allowed'
                                 : 'bg-purple-600 hover:bg-purple-700 text-white focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2'}`}
                     >
-                        {timerRunning ? 'Challenge in Progress...' : 'Generate Challenge'}
+                        {timerRunning
+                            ? 'Challenge in Progress...'
+                            : generatingChallenge
+                                ? 'Generating Challenge...'
+                                : 'Generate Challenge'}
                     </button>
+
 
 
                     <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-4">
