@@ -14,7 +14,6 @@ export const loginUser = async (email, password) => {
   });
   return res.data;
 };
-
 //  Register user
 export const registerUser = async (email, password, name) => {
   const res = await axiosInstance.post("/api/auth/register", {
@@ -24,7 +23,6 @@ export const registerUser = async (email, password, name) => {
   });
   return res.data;
 };
-
 //  Logout user
 export const logoutUser = async () => {
   const res = await axiosInstance.post("/api/auth/logout");

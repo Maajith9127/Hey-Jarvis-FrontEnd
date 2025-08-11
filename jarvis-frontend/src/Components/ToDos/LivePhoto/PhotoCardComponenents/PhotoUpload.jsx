@@ -14,9 +14,9 @@ const PhotoUpload = ({ photoid }) => {
 
     setIsUploading(true);
     try {
-      console.log("📤 Uploading photo...");
+      console.log("Uploading photo...");
       const data = await uploadVerificationPhoto(File); // ✅ service call
-      console.log("✅ Upload response:", data);
+      console.log(" Upload response:", data);
 
       const payload = {
         PhotoId: photoid,
@@ -24,7 +24,7 @@ const PhotoUpload = ({ photoid }) => {
       };
       dispatch(UpdatePhotoUrlFromRedux(payload));
     } catch (error) {
-      console.error("❌ Upload failed:", error);
+      console.error(" Upload failed:", error);
     } finally {
       setIsUploading(false);
     }
