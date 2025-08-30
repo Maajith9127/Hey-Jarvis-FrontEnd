@@ -1,6 +1,6 @@
 import axiosInstance from "./axiosInstance";
 
-export const generateChallenge = async ({ TodoId, collection,Accountability }) => {
+export const generateChallenge = async ({ TodoId, collection, Accountability }) => {
     const res = await axiosInstance.post("/apiLivePhotoVerfication/ChallengeGenerate", {
         TodoId,
         collection,
@@ -17,15 +17,18 @@ export const uploadVerificationPhoto = async (file) => {
     return res.data; // expects { Url: "..." }
 };
 
-export const verifyLivePhoto = async ({ image, TodoId, SpecificEventId, collection, Accountabilitiy, ChallengeText, userId }) => {
+export const verifyLivePhoto = async ({ TodoId, Accountability, enteredString }) => {
     const res = await axiosInstance.post("/apiLivePhotoVerfication", {
-        image,
         TodoId,
-        SpecificEventId,
-        collection,
-        Accountabilitiy,
-        ChallengeText,
-        userId, //  include userId here
+        Accountability,
+        enteredString,   //  include it
     });
     return res.data;
 };
+
+export const getActiveChallenge = async (TodoId) => {
+    const res = await axiosInstance.get(`/apiLivePhotoVerfication/getActiveChallenge?TodoId=${TodoId}`);
+    return res.data;
+};
+
+

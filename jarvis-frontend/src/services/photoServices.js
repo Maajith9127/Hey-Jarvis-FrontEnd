@@ -9,3 +9,19 @@ export const saveLivePhotos = async ({ added, updated, deleted }) => {
 export const fetchLivePhotos = async () => {
   return axios.get('/apiPhotos/GetLivePhotos');
 };
+
+// Save positions (changed data only)
+export const savePositions = async (positionsPayload) => {
+  return axios.post('/apiPositions/SavePositions', positionsPayload);
+};
+
+// Fetch positions
+export const fetchPositions = async () => {
+  try {
+    const res = await axios.get('/apiPositions/GetPositions');
+    return res.data; //  Only the useful { positions: [...] }
+  } catch (err) {
+    console.error(" Error fetching positions:", err);
+    throw err;
+  }
+};

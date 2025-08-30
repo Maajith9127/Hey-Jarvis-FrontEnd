@@ -5,6 +5,7 @@ const initialState = {
   data: null,
   open: false,
   accountability: null,
+  activeChallenge: null
 };
 
 const challengeSlice = createSlice({
@@ -23,10 +24,13 @@ const challengeSlice = createSlice({
     setSelectedAccountability: (state, action) => {
       state.accountability = action.payload;
     },
+    setActiveChallenge: (state, action) => {   // <-- new reducer
+      state.activeChallenge = action.payload;
+    }
 
 
   },
 });
 
-export const { setChallengeData,setSelectedAccountability } = challengeSlice.actions;
+export const { setChallengeData, setSelectedAccountability, setActiveChallenge } = challengeSlice.actions;
 export default challengeSlice.reducer;

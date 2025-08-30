@@ -1,0 +1,92 @@
+"filename", "language", "JSON", "Markdown", "JavaScript", "JavaScript JSX", "PostCSS", "XML", "HTML", "Properties", "comment", "blank", "total"
+"c:\Users\maaji\OneDrive\Desktop\Jarvis-FrontEnd\Hey-Jarvis-FrontEnd\README.md", "Markdown", 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1
+"c:\Users\maaji\OneDrive\Desktop\Jarvis-FrontEnd\Hey-Jarvis-FrontEnd\jarvis-frontend\.env", "Properties", 0, 0, 0, 0, 0, 0, 0, 3, 12, 7, 22
+"c:\Users\maaji\OneDrive\Desktop\Jarvis-FrontEnd\Hey-Jarvis-FrontEnd\jarvis-frontend\README.md", "Markdown", 0, 7, 0, 0, 0, 0, 0, 0, 0, 6, 13
+"c:\Users\maaji\OneDrive\Desktop\Jarvis-FrontEnd\Hey-Jarvis-FrontEnd\jarvis-frontend\eslint.config.js", "JavaScript", 0, 0, 32, 0, 0, 0, 0, 0, 0, 2, 34
+"c:\Users\maaji\OneDrive\Desktop\Jarvis-FrontEnd\Hey-Jarvis-FrontEnd\jarvis-frontend\index.html", "HTML", 0, 0, 0, 0, 0, 0, 13, 0, 0, 1, 14
+"c:\Users\maaji\OneDrive\Desktop\Jarvis-FrontEnd\Hey-Jarvis-FrontEnd\jarvis-frontend\package-lock.json", "JSON", 3930, 0, 0, 0, 0, 0, 0, 0, 0, 1, 3931
+"c:\Users\maaji\OneDrive\Desktop\Jarvis-FrontEnd\Hey-Jarvis-FrontEnd\jarvis-frontend\package.json", "JSON", 51, 0, 0, 0, 0, 0, 0, 0, 0, 1, 52
+"c:\Users\maaji\OneDrive\Desktop\Jarvis-FrontEnd\Hey-Jarvis-FrontEnd\jarvis-frontend\public\vite.svg", "XML", 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1
+"c:\Users\maaji\OneDrive\Desktop\Jarvis-FrontEnd\Hey-Jarvis-FrontEnd\jarvis-frontend\src\App.css", "PostCSS", 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1
+"c:\Users\maaji\OneDrive\Desktop\Jarvis-FrontEnd\Hey-Jarvis-FrontEnd\jarvis-frontend\src\App.jsx", "JavaScript JSX", 0, 0, 0, 39, 0, 0, 0, 0, 47, 20, 106
+"c:\Users\maaji\OneDrive\Desktop\Jarvis-FrontEnd\Hey-Jarvis-FrontEnd\jarvis-frontend\src\Components\Accountability\Accountability.jsx", "JavaScript JSX", 0, 0, 0, 68, 0, 0, 0, 0, 4, 10, 82
+"c:\Users\maaji\OneDrive\Desktop\Jarvis-FrontEnd\Hey-Jarvis-FrontEnd\jarvis-frontend\src\Components\Accountability\Message\Message.jsx", "JavaScript JSX", 0, 0, 0, 165, 0, 0, 0, 0, 5, 25, 195
+"c:\Users\maaji\OneDrive\Desktop\Jarvis-FrontEnd\Hey-Jarvis-FrontEnd\jarvis-frontend\src\Components\Accountability\Payment\Payment.jsx", "JavaScript JSX", 0, 0, 0, 12, 0, 0, 0, 0, 0, 3, 15
+"c:\Users\maaji\OneDrive\Desktop\Jarvis-FrontEnd\Hey-Jarvis-FrontEnd\jarvis-frontend\src\Components\Accountability\Payment\PaymentForm.jsx", "JavaScript JSX", 0, 0, 0, 163, 0, 0, 0, 0, 0, 22, 185
+"c:\Users\maaji\OneDrive\Desktop\Jarvis-FrontEnd\Hey-Jarvis-FrontEnd\jarvis-frontend\src\Components\Accountability\Payment\Payout.jsx", "JavaScript JSX", 0, 0, 0, 112, 0, 0, 0, 0, 4, 18, 134
+"c:\Users\maaji\OneDrive\Desktop\Jarvis-FrontEnd\Hey-Jarvis-FrontEnd\jarvis-frontend\src\Components\Common\Footer.jsx", "JavaScript JSX", 0, 0, 0, 27, 0, 0, 0, 0, 4, 6, 37
+"c:\Users\maaji\OneDrive\Desktop\Jarvis-FrontEnd\Hey-Jarvis-FrontEnd\jarvis-frontend\src\Components\Modals\LocationModal.jsx", "JavaScript JSX", 0, 0, 0, 48, 0, 0, 0, 0, 0, 8, 56
+"c:\Users\maaji\OneDrive\Desktop\Jarvis-FrontEnd\Hey-Jarvis-FrontEnd\jarvis-frontend\src\Components\Modals\RepeatModal.jsx", "JavaScript JSX", 0, 0, 0, 165, 0, 0, 0, 0, 0, 19, 184
+"c:\Users\maaji\OneDrive\Desktop\Jarvis-FrontEnd\Hey-Jarvis-FrontEnd\jarvis-frontend\src\Components\Modals\SignInModal.jsx", "JavaScript JSX", 0, 0, 0, 170, 0, 0, 0, 0, 133, 37, 340
+"c:\Users\maaji\OneDrive\Desktop\Jarvis-FrontEnd\Hey-Jarvis-FrontEnd\jarvis-frontend\src\Components\Modals\StrictModeModal.jsx", "JavaScript JSX", 0, 0, 0, 88, 0, 0, 0, 0, 3, 15, 106
+"c:\Users\maaji\OneDrive\Desktop\Jarvis-FrontEnd\Hey-Jarvis-FrontEnd\jarvis-frontend\src\Components\Policies\AboutUs.jsx", "JavaScript JSX", 0, 0, 0, 38, 0, 0, 0, 0, 0, 8, 46
+"c:\Users\maaji\OneDrive\Desktop\Jarvis-FrontEnd\Hey-Jarvis-FrontEnd\jarvis-frontend\src\Components\Policies\Contact.jsx", "JavaScript JSX", 0, 0, 0, 50, 0, 0, 0, 0, 2, 4, 56
+"c:\Users\maaji\OneDrive\Desktop\Jarvis-FrontEnd\Hey-Jarvis-FrontEnd\jarvis-frontend\src\Components\Policies\Privacy.jsx", "JavaScript JSX", 0, 0, 0, 43, 0, 0, 0, 0, 0, 9, 52
+"c:\Users\maaji\OneDrive\Desktop\Jarvis-FrontEnd\Hey-Jarvis-FrontEnd\jarvis-frontend\src\Components\Policies\Refund.jsx", "JavaScript JSX", 0, 0, 0, 42, 0, 0, 0, 0, 0, 9, 51
+"c:\Users\maaji\OneDrive\Desktop\Jarvis-FrontEnd\Hey-Jarvis-FrontEnd\jarvis-frontend\src\Components\Policies\Terms.jsx", "JavaScript JSX", 0, 0, 0, 48, 0, 0, 0, 0, 0, 9, 57
+"c:\Users\maaji\OneDrive\Desktop\Jarvis-FrontEnd\Hey-Jarvis-FrontEnd\jarvis-frontend\src\Components\Scrollbar\Scrollbar.jsx", "JavaScript JSX", 0, 0, 0, 94, 0, 0, 0, 0, 0, 7, 101
+"c:\Users\maaji\OneDrive\Desktop\Jarvis-FrontEnd\Hey-Jarvis-FrontEnd\jarvis-frontend\src\Components\TimeLineAndDays\Calendar.jsx", "JavaScript JSX", 0, 0, 0, 255, 0, 0, 0, 0, 19, 53, 327
+"c:\Users\maaji\OneDrive\Desktop\Jarvis-FrontEnd\Hey-Jarvis-FrontEnd\jarvis-frontend\src\Components\TimeLineAndDays\CalendarControls.jsx", "JavaScript JSX", 0, 0, 0, 223, 0, 0, 0, 0, 3, 40, 266
+"c:\Users\maaji\OneDrive\Desktop\Jarvis-FrontEnd\Hey-Jarvis-FrontEnd\jarvis-frontend\src\Components\TimeLineAndDays\StrictModeModule\StrictModeModal.jsx", "JavaScript JSX", 0, 0, 0, 98, 0, 0, 0, 0, 19, 23, 140
+"c:\Users\maaji\OneDrive\Desktop\Jarvis-FrontEnd\Hey-Jarvis-FrontEnd\jarvis-frontend\src\Components\TimeLineAndDays\TimeLineAndDays.jsx", "JavaScript JSX", 0, 0, 0, 44, 0, 0, 0, 0, 24, 20, 88
+"c:\Users\maaji\OneDrive\Desktop\Jarvis-FrontEnd\Hey-Jarvis-FrontEnd\jarvis-frontend\src\Components\ToDos\AppBlocking\AppBlocking.jsx", "JavaScript JSX", 0, 0, 0, 7, 0, 0, 0, 0, 0, 2, 9
+"c:\Users\maaji\OneDrive\Desktop\Jarvis-FrontEnd\Hey-Jarvis-FrontEnd\jarvis-frontend\src\Components\ToDos\LivePhoto\LivePhoto.jsx", "JavaScript JSX", 0, 0, 0, 147, 0, 0, 0, 0, 0, 38, 185
+"c:\Users\maaji\OneDrive\Desktop\Jarvis-FrontEnd\Hey-Jarvis-FrontEnd\jarvis-frontend\src\Components\ToDos\LivePhoto\PhotoCardComponenents\AccountabilitiesToVerify.jsx", "JavaScript JSX", 0, 0, 0, 80, 0, 0, 0, 0, 1, 13, 94
+"c:\Users\maaji\OneDrive\Desktop\Jarvis-FrontEnd\Hey-Jarvis-FrontEnd\jarvis-frontend\src\Components\ToDos\LivePhoto\PhotoCardComponenents\Challenge.jsx", "JavaScript JSX", 0, 0, 0, 222, 0, 0, 0, 0, 503, 129, 854
+"c:\Users\maaji\OneDrive\Desktop\Jarvis-FrontEnd\Hey-Jarvis-FrontEnd\jarvis-frontend\src\Components\ToDos\LivePhoto\PhotoCardComponenents\HelperFunctions\HeaderSection.jsx", "JavaScript JSX", 0, 0, 0, 60, 0, 0, 0, 0, 4, 8, 72
+"c:\Users\maaji\OneDrive\Desktop\Jarvis-FrontEnd\Hey-Jarvis-FrontEnd\jarvis-frontend\src\Components\ToDos\LivePhoto\PhotoCardComponenents\HelperFunctions\TimeFormatter.jsx", "JavaScript JSX", 0, 0, 0, 39, 0, 0, 0, 0, 15, 8, 62
+"c:\Users\maaji\OneDrive\Desktop\Jarvis-FrontEnd\Hey-Jarvis-FrontEnd\jarvis-frontend\src\Components\ToDos\LivePhoto\PhotoCardComponenents\PhotoUpload.jsx", "JavaScript JSX", 0, 0, 0, 142, 0, 0, 0, 0, 106, 34, 282
+"c:\Users\maaji\OneDrive\Desktop\Jarvis-FrontEnd\Hey-Jarvis-FrontEnd\jarvis-frontend\src\Components\ToDos\LivePhoto\PhotoCardComponenents\Positions.jsx", "JavaScript JSX", 0, 0, 0, 75, 0, 0, 0, 0, 73, 19, 167
+"c:\Users\maaji\OneDrive\Desktop\Jarvis-FrontEnd\Hey-Jarvis-FrontEnd\jarvis-frontend\src\Components\ToDos\LivePhoto\PhotoCardComponenents\VerfiyList.jsx", "JavaScript JSX", 0, 0, 0, 91, 0, 0, 0, 0, 1, 15, 107
+"c:\Users\maaji\OneDrive\Desktop\Jarvis-FrontEnd\Hey-Jarvis-FrontEnd\jarvis-frontend\src\Components\ToDos\LivePhoto\PhotoCards.jsx", "JavaScript JSX", 0, 0, 0, 82, 0, 0, 0, 0, 130, 32, 244
+"c:\Users\maaji\OneDrive\Desktop\Jarvis-FrontEnd\Hey-Jarvis-FrontEnd\jarvis-frontend\src\Components\ToDos\LiveVideo\LiveVideo.jsx", "JavaScript JSX", 0, 0, 0, 7, 0, 0, 0, 0, 0, 2, 9
+"c:\Users\maaji\OneDrive\Desktop\Jarvis-FrontEnd\Hey-Jarvis-FrontEnd\jarvis-frontend\src\Components\ToDos\Randomised\Randomised.jsx", "JavaScript JSX", 0, 0, 0, 192, 0, 0, 0, 0, 12, 15, 219
+"c:\Users\maaji\OneDrive\Desktop\Jarvis-FrontEnd\Hey-Jarvis-FrontEnd\jarvis-frontend\src\Components\ToDos\ToDos.jsx", "JavaScript JSX", 0, 0, 0, 68, 0, 0, 0, 0, 4, 10, 82
+"c:\Users\maaji\OneDrive\Desktop\Jarvis-FrontEnd\Hey-Jarvis-FrontEnd\jarvis-frontend\src\Components\ToDos\WebBlocking\WebBlocking.jsx", "JavaScript JSX", 0, 0, 0, 7, 0, 0, 0, 0, 0, 2, 9
+"c:\Users\maaji\OneDrive\Desktop\Jarvis-FrontEnd\Hey-Jarvis-FrontEnd\jarvis-frontend\src\ReduxToolkit\Slices\CalendarSlice.jsx", "JavaScript JSX", 0, 0, 0, 96, 0, 0, 0, 0, 1, 24, 121
+"c:\Users\maaji\OneDrive\Desktop\Jarvis-FrontEnd\Hey-Jarvis-FrontEnd\jarvis-frontend\src\ReduxToolkit\Slices\ChallengeSlice.jsx", "JavaScript JSX", 0, 0, 0, 30, 0, 0, 0, 0, 1, 6, 37
+"c:\Users\maaji\OneDrive\Desktop\Jarvis-FrontEnd\Hey-Jarvis-FrontEnd\jarvis-frontend\src\ReduxToolkit\Slices\CopyPasteSlice.jsx", "JavaScript JSX", 0, 0, 0, 44, 0, 0, 0, 0, 2, 6, 52
+"c:\Users\maaji\OneDrive\Desktop\Jarvis-FrontEnd\Hey-Jarvis-FrontEnd\jarvis-frontend\src\ReduxToolkit\Slices\MessageSlice.jsx", "JavaScript JSX", 0, 0, 0, 87, 0, 0, 0, 0, 0, 19, 106
+"c:\Users\maaji\OneDrive\Desktop\Jarvis-FrontEnd\Hey-Jarvis-FrontEnd\jarvis-frontend\src\ReduxToolkit\Slices\PayoutSlice.jsx", "JavaScript JSX", 0, 0, 0, 77, 0, 0, 0, 0, 11, 18, 106
+"c:\Users\maaji\OneDrive\Desktop\Jarvis-FrontEnd\Hey-Jarvis-FrontEnd\jarvis-frontend\src\ReduxToolkit\Slices\PhotoSlice.jsx", "JavaScript JSX", 0, 0, 0, 89, 0, 0, 0, 0, 2, 19, 110
+"c:\Users\maaji\OneDrive\Desktop\Jarvis-FrontEnd\Hey-Jarvis-FrontEnd\jarvis-frontend\src\ReduxToolkit\Slices\Positions.jsx", "JavaScript JSX", 0, 0, 0, 171, 0, 0, 0, 0, 164, 32, 367
+"c:\Users\maaji\OneDrive\Desktop\Jarvis-FrontEnd\Hey-Jarvis-FrontEnd\jarvis-frontend\src\ReduxToolkit\store.js", "JavaScript", 0, 0, 19, 0, 0, 0, 0, 0, 6, 3, 28
+"c:\Users\maaji\OneDrive\Desktop\Jarvis-FrontEnd\Hey-Jarvis-FrontEnd\jarvis-frontend\src\assets\Dollar.svg", "XML", 0, 0, 0, 0, 0, 5, 0, 0, 1, 0, 6
+"c:\Users\maaji\OneDrive\Desktop\Jarvis-FrontEnd\Hey-Jarvis-FrontEnd\jarvis-frontend\src\assets\add.svg", "XML", 0, 0, 0, 0, 0, 5, 0, 0, 0, 0, 5
+"c:\Users\maaji\OneDrive\Desktop\Jarvis-FrontEnd\Hey-Jarvis-FrontEnd\jarvis-frontend\src\assets\apps.svg", "XML", 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 2
+"c:\Users\maaji\OneDrive\Desktop\Jarvis-FrontEnd\Hey-Jarvis-FrontEnd\jarvis-frontend\src\assets\location.svg", "XML", 0, 0, 0, 0, 0, 5, 0, 0, 0, 0, 5
+"c:\Users\maaji\OneDrive\Desktop\Jarvis-FrontEnd\Hey-Jarvis-FrontEnd\jarvis-frontend\src\assets\media.svg", "XML", 0, 0, 0, 0, 0, 4, 0, 0, 0, 0, 4
+"c:\Users\maaji\OneDrive\Desktop\Jarvis-FrontEnd\Hey-Jarvis-FrontEnd\jarvis-frontend\src\assets\message.svg", "XML", 0, 0, 0, 0, 0, 4, 0, 0, 0, 0, 4
+"c:\Users\maaji\OneDrive\Desktop\Jarvis-FrontEnd\Hey-Jarvis-FrontEnd\jarvis-frontend\src\assets\partner.svg", "XML", 0, 0, 0, 0, 0, 11, 0, 0, 1, 2, 14
+"c:\Users\maaji\OneDrive\Desktop\Jarvis-FrontEnd\Hey-Jarvis-FrontEnd\jarvis-frontend\src\assets\picture.svg", "XML", 0, 0, 0, 0, 0, 13, 0, 0, 1, 3, 17
+"c:\Users\maaji\OneDrive\Desktop\Jarvis-FrontEnd\Hey-Jarvis-FrontEnd\jarvis-frontend\src\assets\react.svg", "XML", 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1
+"c:\Users\maaji\OneDrive\Desktop\Jarvis-FrontEnd\Hey-Jarvis-FrontEnd\jarvis-frontend\src\assets\scroll.svg", "XML", 0, 0, 0, 0, 0, 6, 0, 0, 0, 0, 6
+"c:\Users\maaji\OneDrive\Desktop\Jarvis-FrontEnd\Hey-Jarvis-FrontEnd\jarvis-frontend\src\assets\sleepless-awake-worry-wake-up-svgrepo-com.svg", "XML", 0, 0, 0, 0, 0, 12, 0, 0, 1, 0, 13
+"c:\Users\maaji\OneDrive\Desktop\Jarvis-FrontEnd\Hey-Jarvis-FrontEnd\jarvis-frontend\src\assets\video.svg", "XML", 0, 0, 0, 0, 0, 4, 0, 0, 0, 0, 4
+"c:\Users\maaji\OneDrive\Desktop\Jarvis-FrontEnd\Hey-Jarvis-FrontEnd\jarvis-frontend\src\assets\wake.svg", "XML", 0, 0, 0, 0, 0, 22, 0, 0, 1, 0, 23
+"c:\Users\maaji\OneDrive\Desktop\Jarvis-FrontEnd\Hey-Jarvis-FrontEnd\jarvis-frontend\src\assets\website.svg", "XML", 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 2
+"c:\Users\maaji\OneDrive\Desktop\Jarvis-FrontEnd\Hey-Jarvis-FrontEnd\jarvis-frontend\src\data\countries.js", "JavaScript", 0, 0, 171, 0, 0, 0, 0, 0, 0, 2, 173
+"c:\Users\maaji\OneDrive\Desktop\Jarvis-FrontEnd\Hey-Jarvis-FrontEnd\jarvis-frontend\src\hooks\useCalendarScrollPersistence.js.js", "JavaScript", 0, 0, 30, 0, 0, 0, 0, 0, 1, 9, 40
+"c:\Users\maaji\OneDrive\Desktop\Jarvis-FrontEnd\Hey-Jarvis-FrontEnd\jarvis-frontend\src\hooks\useDraggableElements.js", "JavaScript", 0, 0, 54, 0, 0, 0, 0, 0, 63, 27, 144
+"c:\Users\maaji\OneDrive\Desktop\Jarvis-FrontEnd\Hey-Jarvis-FrontEnd\jarvis-frontend\src\hooks\useFetchAllData.js", "JavaScript", 0, 0, 38, 0, 0, 0, 0, 0, 0, 13, 51
+"c:\Users\maaji\OneDrive\Desktop\Jarvis-FrontEnd\Hey-Jarvis-FrontEnd\jarvis-frontend\src\hooks\usePayment.js", "JavaScript", 0, 0, 61, 0, 0, 0, 0, 0, 20, 20, 101
+"c:\Users\maaji\OneDrive\Desktop\Jarvis-FrontEnd\Hey-Jarvis-FrontEnd\jarvis-frontend\src\hooks\useRandomisedSettings.js", "JavaScript", 0, 0, 41, 0, 0, 0, 0, 0, 30, 20, 91
+"c:\Users\maaji\OneDrive\Desktop\Jarvis-FrontEnd\Hey-Jarvis-FrontEnd\jarvis-frontend\src\hooks\useSocket.js", "JavaScript", 0, 0, 57, 0, 0, 0, 0, 0, 72, 36, 165
+"c:\Users\maaji\OneDrive\Desktop\Jarvis-FrontEnd\Hey-Jarvis-FrontEnd\jarvis-frontend\src\hooks\useUpcomingTodoEvents.js", "JavaScript", 0, 0, 33, 0, 0, 0, 0, 0, 2, 8, 43
+"c:\Users\maaji\OneDrive\Desktop\Jarvis-FrontEnd\Hey-Jarvis-FrontEnd\jarvis-frontend\src\index.css", "PostCSS", 0, 0, 0, 0, 237, 0, 0, 0, 17, 58, 312
+"c:\Users\maaji\OneDrive\Desktop\Jarvis-FrontEnd\Hey-Jarvis-FrontEnd\jarvis-frontend\src\learning.jsx", "JavaScript JSX", 0, 0, 0, 11, 0, 0, 0, 0, 0, 3, 14
+"c:\Users\maaji\OneDrive\Desktop\Jarvis-FrontEnd\Hey-Jarvis-FrontEnd\jarvis-frontend\src\main.jsx", "JavaScript JSX", 0, 0, 0, 39, 0, 0, 0, 0, 6, 12, 57
+"c:\Users\maaji\OneDrive\Desktop\Jarvis-FrontEnd\Hey-Jarvis-FrontEnd\jarvis-frontend\src\services\authService.js", "JavaScript", 0, 0, 24, 0, 0, 0, 0, 0, 4, 3, 31
+"c:\Users\maaji\OneDrive\Desktop\Jarvis-FrontEnd\Hey-Jarvis-FrontEnd\jarvis-frontend\src\services\axiosInstance.js", "JavaScript", 0, 0, 6, 0, 0, 0, 0, 0, 0, 3, 9
+"c:\Users\maaji\OneDrive\Desktop\Jarvis-FrontEnd\Hey-Jarvis-FrontEnd\jarvis-frontend\src\services\calendarService.js", "JavaScript", 0, 0, 26, 0, 0, 0, 0, 0, 1, 8, 35
+"c:\Users\maaji\OneDrive\Desktop\Jarvis-FrontEnd\Hey-Jarvis-FrontEnd\jarvis-frontend\src\services\getAllDataFromServer.js", "JavaScript", 0, 0, 10, 0, 0, 0, 0, 0, 1, 2, 13
+"c:\Users\maaji\OneDrive\Desktop\Jarvis-FrontEnd\Hey-Jarvis-FrontEnd\jarvis-frontend\src\services\messageService.js", "JavaScript", 0, 0, 13, 0, 0, 0, 0, 0, 0, 3, 16
+"c:\Users\maaji\OneDrive\Desktop\Jarvis-FrontEnd\Hey-Jarvis-FrontEnd\jarvis-frontend\src\services\paymentService.js", "JavaScript", 0, 0, 25, 0, 0, 0, 0, 0, 1, 7, 33
+"c:\Users\maaji\OneDrive\Desktop\Jarvis-FrontEnd\Hey-Jarvis-FrontEnd\jarvis-frontend\src\services\photoServices.js", "JavaScript", 0, 0, 19, 0, 0, 0, 0, 0, 5, 3, 27
+"c:\Users\maaji\OneDrive\Desktop\Jarvis-FrontEnd\Hey-Jarvis-FrontEnd\jarvis-frontend\src\services\randomisedService.js", "JavaScript", 0, 0, 10, 0, 0, 0, 0, 0, 12, 6, 28
+"c:\Users\maaji\OneDrive\Desktop\Jarvis-FrontEnd\Hey-Jarvis-FrontEnd\jarvis-frontend\src\services\repeatService.js", "JavaScript", 0, 0, 5, 0, 0, 0, 0, 0, 1, 2, 8
+"c:\Users\maaji\OneDrive\Desktop\Jarvis-FrontEnd\Hey-Jarvis-FrontEnd\jarvis-frontend\src\services\strictModeService.js", "JavaScript", 0, 0, 7, 0, 0, 0, 0, 0, 1, 2, 10
+"c:\Users\maaji\OneDrive\Desktop\Jarvis-FrontEnd\Hey-Jarvis-FrontEnd\jarvis-frontend\src\services\verifyLivePhoto.js", "JavaScript", 0, 0, 27, 0, 0, 0, 0, 0, 0, 8, 35
+"c:\Users\maaji\OneDrive\Desktop\Jarvis-FrontEnd\Hey-Jarvis-FrontEnd\jarvis-frontend\vercel.json", "JSON", 5, 0, 0, 0, 0, 0, 0, 0, 0, 1, 6
+"c:\Users\maaji\OneDrive\Desktop\Jarvis-FrontEnd\Hey-Jarvis-FrontEnd\jarvis-frontend\vite.config.js", "JavaScript", 0, 0, 12, 0, 0, 0, 0, 0, 2, 2, 16
+"Total", "-", 3986, 8, 720, 3855, 237, 97, 13, 3, 1559, 1101, 11579

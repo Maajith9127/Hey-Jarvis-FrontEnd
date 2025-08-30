@@ -19,16 +19,41 @@ export const getBackgroundColor = (verified, start, end) => {
     return withinTime ? 'bg-red-600 border border-black' : 'bg-red-600 opacity-50';
 };
 
+// export const ChallengeTimer = ({ timer }) => {
+//     return (
+//         <div className="mt- border 4 w-full">
+//             <div className="text-lg mb-2">
+//                 ⏳ Time Remaining: <span className="font-bold">{timer}</span> seconds
+//             </div>
+//             <div className="w-full h-3 bg-gray-700 rounded">
+//                 <div
+//                     className="h-3 bg-green-500 rounded transition-all duration-200"
+//                     style={{ width: `${(timer / 30) * 100}%` }}
+//                 ></div>
+//             </div>
+//         </div>
+//     );
+// };
+
 export const ChallengeTimer = ({ timer }) => {
+    const TOTAL_TIME = 180; // 3 minutes in seconds
+    const percentage = (timer / TOTAL_TIME) * 100;
+
+    const minutes = Math.floor(timer / 60);
+    const seconds = timer % 60;
+
     return (
-        <div className="mt-4 w-full">
+        <div className="mt-4  p-4 w-full">
             <div className="text-lg mb-2">
-                ⏳ Time Remaining: <span className="font-bold">{timer}</span> seconds
+                ⏳ Time Remaining:{" "}
+                <span className="font-bold">
+                    {minutes}:{seconds.toString().padStart(2, "0")}
+                </span>
             </div>
-            <div className="w-full h-3 bg-gray-700 rounded">
+            <div className="w-full h-3 bg-gray-300 rounded">
                 <div
                     className="h-3 bg-green-500 rounded transition-all duration-200"
-                    style={{ width: `${(timer / 30) * 100}%` }}
+                    style={{ width: `${percentage}%` }}
                 ></div>
             </div>
         </div>

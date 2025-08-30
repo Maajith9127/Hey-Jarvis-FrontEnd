@@ -12,8 +12,6 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useLocation } from 'react-router-dom';
 
-
-
 import {
   AddPhotoToRedux,
   DeletePhotoFromRedux,
@@ -23,7 +21,8 @@ import {
 } from '../../../ReduxToolkit/Slices/PhotoSlice';
 
 import { deleteEventFromRedux } from '../../../ReduxToolkit/Slices/CalendarSlice';
-import { fetchLivePhotos, saveLivePhotos } from '../../../services/photoServices.js';
+import { fetchLivePhotos, saveLivePhotos, savePositions, fetchPositions } from '../../../services/photoServices.js';
+import { setPositionsFromDb, deletePhotoPositions } from '../../../ReduxToolkit/Slices/Positions.jsx';
 
 const Photo = () => {
   const dispatch = useDispatch();
@@ -31,9 +30,8 @@ const Photo = () => {
   const [isSavingPhoto, setIsSavingPhoto] = useState(false);
   const location = useLocation();
   const isRandomisedRoute = location.pathname === '/randomised';
+  const positions = useSelector((state) => state.positions.items);
   console.log("Hey it is ", isRandomisedRoute)
-
-
 
 
   useEffect(() => {
@@ -59,6 +57,23 @@ const Photo = () => {
     dispatch(RebuildAddedFromPhotos());
   }, [PhotosFromDb]);
 
+  useEffect(() => {
+    const loadPositions = async () => {
+      try {
+        const data = await fetchPositions();
+        dispatch(setPositionsFromDb({ positions: data.positions }));
+        console.log(" Hydrated positions into Redux:", data.positions);
+      } catch (err) {
+        console.error(" Failed to fetch positions:", err);
+      }
+    };
+
+    loadPositions();
+  }, [dispatch]);
+
+
+
+
   const photos = useSelector((state) => state.photo.Photos);
   const { added, updated, deleted } = useSelector((state) => state.photo);
 
@@ -69,6 +84,7 @@ const Photo = () => {
   };
 
   const deletePhoto = (id) => {
+    dispatch(deletePhotoPositions({ photoId: id }));
     dispatch(DeletePhotoFromRedux(id));
     dispatch(deleteEventFromRedux({ TodoIdToDeleteAllSuchEventsFromCalendar: id }));
   };
@@ -85,6 +101,7 @@ const Photo = () => {
 
     try {
       const res = await saveLivePhotos(payload);
+      const resPositions = await savePositions({ positions });
       console.log(" Delta save successful:", res.data);
 
       toast.success(res?.data?.message || " Photos saved successfully!");
@@ -110,29 +127,38 @@ const Photo = () => {
           isSavingPhoto={isSavingPhoto}
         />
 
-        {isRandomisedRoute && <Randomised/>}
-    
+        {isRandomisedRoute && <Randomised />}
 
-        <div className='max-w-4xl mx-auto mt-8'>
+        <div className='max-w-4xl mx-auto mt-1'>
           <div className='space-y-6'>
             {photos.map((photo) => (
               <div key={photo.id} className='bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden'>
                 <div className='p-6'>
-                  <div className='flex items-center justify-between mb-4'>
+                  <div className='flex  mb-4'>
                     <input
                       placeholder='Enter Photo Name'
                       type="text"
                       value={photo.photoName}
                       onChange={(event) => handleChange(photo.id, event.target.value)}
-                      className='text-lg font-semibold text-gray-800 bg-transparent border-none outline-none focus:bg-gray-50 focus:px-2 focus:py-1 focus:rounded-md transition-all duration-200 flex-1'
+                      className='text-lg font-semibold text-gray-800 bg-transparent border-none  outline-none focus:bg-gray-50 focus:px-2 focus:py-1 focus:rounded-md transition-all duration-200 flex-1'
                     />
                     <button
-                      type='button'
-                      className='text-red-500 hover:text-red-700 hover:bg-red-50 px-3 py-1 rounded-md transition-all duration-200 text-sm font-medium'
+                      type="button"
+                      className="text-red-500 hover:text-red-700 hover:bg-red-50 px-3 py-1 rounded-md transition-all duration-200 text-sm font-medium"
                       onClick={() => deletePhoto(photo.id)}
                     >
-                      Delete
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        className="w-4 h-4"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                        strokeWidth={2}
+                      >
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+                      </svg>
                     </button>
+
                   </div>
                   <PhotoCard photo={photo.id} />
                 </div>
@@ -150,3 +176,9 @@ const Photo = () => {
 };
 
 export default Photo;
+
+
+
+
+
+

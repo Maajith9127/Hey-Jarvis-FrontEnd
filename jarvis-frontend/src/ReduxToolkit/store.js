@@ -5,6 +5,7 @@ import MessageReducer from './Slices/MessageSlice.jsx'
 import challengeReducer from './Slices/ChallengeSlice';
 import PayoutReducer from './Slices/PayoutSlice.jsx';
 import copyPasteReducer from './Slices/CopyPasteSlice';
+import Positions from './Slices/Positions.jsx'
 
 export const store = configureStore({
     reducer: {
@@ -14,6 +15,7 @@ export const store = configureStore({
         challenge: challengeReducer,
         payout: PayoutReducer,
         copyPaste: copyPasteReducer,
+        positions:Positions,
     }
 })
 
