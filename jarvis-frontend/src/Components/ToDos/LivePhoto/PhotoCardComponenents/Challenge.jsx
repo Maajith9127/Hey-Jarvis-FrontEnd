@@ -594,7 +594,11 @@ import AccountabilitiesToVerify from './AccountabilitiesToVerify';
 import { ChallengeTimer } from './HelperFunctions/TimeFormatter';
 import { generateChallenge, verifyLivePhoto, getActiveChallenge } from '../../../../services/verifyLivePhoto';
 
+const TOTAL_TIME = parseInt(import.meta.env.VITE_CHALLENGE_TIME_LIMIT || "240", 10);
+
 const Challenge = () => {
+
+
     const [userInputString, setUserInputString] = useState("");
     const [challengePhotoUrl, setChallengePhotoUrl] = useState(null);  // ✅ step photo
     const [selectedAccId, setSelectedAccId] = useState(null);
@@ -636,7 +640,7 @@ const Challenge = () => {
                     dispatch(setActiveChallenge(res));
 
                     const elapsed = Math.floor((Date.now() - res.GeneratedAt) / 1000);
-                    const remaining = 240 - elapsed;
+                    const remaining = TOTAL_TIME - elapsed;
                     if (remaining > 0) {
                         setTimer(remaining);
                         setTimerRunning(true);
@@ -705,7 +709,7 @@ const Challenge = () => {
             const challengeGeneratedAt = Number(data.GeneratedAt);
             const now = Date.now();
             const elapsedSeconds = Math.floor((now - challengeGeneratedAt) / 1000);
-            const remaining = 240 - elapsedSeconds > 0 ? 240 - elapsedSeconds : 0;
+            const remaining = TOTAL_TIME - elapsedSeconds > 0 ? TOTAL_TIME - elapsedSeconds : 0;
 
             setTimer(remaining);
             setTimerRunning(true);
@@ -773,7 +777,7 @@ const Challenge = () => {
                             <div className="w-full bg-gray-200 rounded-full h-2">
                                 <div
                                     className="bg-green-500 h-2 rounded-full transition-all duration-300"
-                                    style={{ width: `${(timer / 240) * 100}%` }}
+                                    style={{ width: `${(timer / TOTAL_TIME) * 100}%` }}
                                 />
                             </div>
                         </div>

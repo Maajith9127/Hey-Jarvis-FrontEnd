@@ -120,7 +120,7 @@ const Photo = () => {
 
 
       <Challenge />
-      <div className='min-h-screen bg-gray-50 px-6 py-8'>
+      <div className='min-h-screen  bg-gray-50  py-8'>
         <HeaderSection
           onAddPhoto={addPhoto}
           onSavePhoto={SavePhoto}
@@ -129,7 +129,7 @@ const Photo = () => {
 
         {isRandomisedRoute && <Randomised />}
 
-        <div className='max-w-4xl mx-auto mt-1'>
+        <div className='max-w-4xl  mx-auto mt-1'>
           <div className='space-y-6'>
             {photos.map((photo) => (
               <div key={photo.id} className='bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden'>

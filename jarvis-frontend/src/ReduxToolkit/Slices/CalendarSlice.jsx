@@ -7,12 +7,19 @@ const initialState = {
   updated: [],
   deleted: [],
   deleteMode: false, // added
+  strictModeAll: false,
 };
 
 const CalendarSlice = createSlice({
   name: 'CalendarSlice',
   initialState,
   reducers: {
+    toggleStrictModeAll: (state) => {
+      state.strictModeAll = !state.strictModeAll;
+    },
+    setStrictModeAll: (state, action) => {
+      state.strictModeAll = action.payload;
+    },
     addEventsToRedux: (state, action) => {
       const newEvent = {
         ...action.payload,
@@ -114,7 +121,9 @@ export const {
   deleteEventFromRedux,
   clearDeltaEvents,
   toggleDeleteMode,      //export toggle
-  setDeleteMode          //export setter
+  setDeleteMode,
+  toggleStrictModeAll,   // ✅ export
+  setStrictModeAll         //export setter
 } = CalendarSlice.actions;
 
 export default CalendarSlice.reducer;
