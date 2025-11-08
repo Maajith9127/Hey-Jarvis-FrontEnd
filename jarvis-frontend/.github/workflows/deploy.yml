@@ -10,24 +10,40 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: 🧩 Checkout code
+      - name: 🧹 Checkout code
         uses: actions/checkout@v3
 
-      - name: 🔑 Setup SSH access
-        uses: webfactory/ssh-agent@v0.7.0
+      - name: ⚙️ Setup Node
+        uses: actions/setup-node@v3
         with:
-          ssh-private-key: ${{ secrets.EC2_SSH_KEY }}
+          node-version: 20
 
-      - name: 🚀 Build & Deploy to EC2
+      - name: 📦 Install dependencies
         run: |
-          ssh -o StrictHostKeyChecking=no ${{ secrets.EC2_USER }}@${{ secrets.EC2_HOST }} << 'EOF'
-            cd ~/jarvis-deploy-v2/frontend
-            git pull origin main
-            npm install
-            npm run build
+          cd jarvis-frontend
+          npm ci
 
+      - name: 🏗️ Build project
+        run: |
+          cd jarvis-frontend
+          npm run build
+
+      - name: 📤 Deploy to EC2
+        uses: appleboy/scp-action@v0.1.4
+        with:
+          host: ${{ secrets.EC2_HOST }}
+          username: ubuntu
+          key: ${{ secrets.EC2_SSH_KEY }}
+          source: "jarvis-frontend/dist/*"
+          target: "/home/ubuntu/jarvis-frontend-dist"
+
+      - name: 🚀 Move build to Nginx directory
+        uses: appleboy/ssh-action@v0.1.7
+        with:
+          host: ${{ secrets.EC2_HOST }}
+          username: ubuntu
+          key: ${{ secrets.EC2_SSH_KEY }}
+          script: |
             sudo rm -rf /usr/share/nginx/html/*
-            sudo cp -r dist/* /usr/share/nginx/html/
+            sudo cp -r /home/ubuntu/jarvis-frontend-dist/* /usr/share/nginx/html/
             sudo systemctl restart nginx
-            echo "✅ Frontend deployed successfully!"
-          EOF
