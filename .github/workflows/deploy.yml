@@ -36,13 +36,13 @@ jobs:
       - name: 🧩 Debug SSH Key presence
         run: |
           echo "🔍 Checking SSH key variable..."
-          if [ -z "${{ secrets.EC2_KEY }}" ]; then
+          if [ -z "${{ secrets.FRONTEND_DEPLOY_KEY }}" ]; then
             echo "❌ SSH key secret is missing or not passed!"
             exit 1
           else
             echo "✅ SSH key secret detected."
             echo "🔐 First 100 chars of key:"
-            echo "${{ secrets.EC2_KEY }}" | head -c 100
+            echo "${{ secrets.FRONTEND_DEPLOY_KEY }}" | head -c 100
           fi
           echo "🌍 EC2 Host: ${{ secrets.EC2_HOST }}"
           echo "👤 EC2 User: ${{ secrets.EC2_USER }}"
@@ -51,7 +51,7 @@ jobs:
       - name: 🌐 Pre-check SSH connection manually
         run: |
           echo "🔍 Testing raw SSH connectivity..."
-          echo "${{ secrets.EC2_KEY }}" > /tmp/ec2_key.pem
+          echo "${{ secrets.FRONTEND_DEPLOY_KEY }}" > /tmp/ec2_key.pem
           chmod 600 /tmp/ec2_key.pem
           echo "⏳ Trying to connect to ${{ secrets.EC2_HOST }} on port 22..."
           ssh -vvv -o ConnectTimeout=10 -i /tmp/ec2_key.pem ${{ secrets.EC2_USER }}@${{ secrets.EC2_HOST }} "echo ✅ SSH connected successfully." || (echo "❌ SSH connection test failed!" && exit 1)
@@ -62,7 +62,7 @@ jobs:
         with:
           host: ${{ secrets.EC2_HOST }}
           username: ${{ secrets.EC2_USER }}
-          key: ${{ secrets.EC2_KEY }}
+          key: ${{ secrets.FRONTEND_DEPLOY_KEY }}
           source: "jarvis-frontend/dist/*"
           target: "/usr/share/nginx/html"
           port: 22
@@ -75,7 +75,7 @@ jobs:
         with:
           host: ${{ secrets.EC2_HOST }}
           username: ${{ secrets.EC2_USER }}
-          key: ${{ secrets.EC2_KEY }}
+          key: ${{ secrets.FRONTEND_DEPLOY_KEY }}
           script: |
             echo "🟡 Checking Nginx directory permissions..."
             ls -ld /usr/share/nginx/html
