@@ -33,22 +33,32 @@ jobs:
           echo "✅ Build complete. Contents of dist folder:"
           ls -la dist
 
+      - name: 🧩 Debug SSH Key presence
+        run: |
+          if [ -z "${{ secrets.EC2_KEY }}" ]; then
+            echo "❌ SSH key secret is missing or not passed!"
+            exit 1
+          else
+            echo "✅ SSH key secret detected (length: ${#EC2_KEY})"
+          fi
+        shell: bash
+
       - name: 📤 Deploy to EC2 (SCP)
         uses: appleboy/scp-action@v0.1.4
         with:
           host: ${{ secrets.EC2_HOST }}
-          username: ubuntu
-          key: ${{ secrets.EC2_SSH_KEY }}
+          username: ${{ secrets.EC2_USER }}
+          key: ${{ secrets.EC2_KEY }}
           source: "jarvis-frontend/dist/*"
           target: "/usr/share/nginx/html"
-          debug: true    # <— adds detailed logs for SCP
+          debug: true
 
-      - name: 🚀 Verify Nginx directory and permissions
+      - name: 🚀 Verify & restart Nginx
         uses: appleboy/ssh-action@v0.1.7
         with:
           host: ${{ secrets.EC2_HOST }}
-          username: ubuntu
-          key: ${{ secrets.EC2_SSH_KEY }}
+          username: ${{ secrets.EC2_USER }}
+          key: ${{ secrets.EC2_KEY }}
           script: |
             echo "🟡 Checking Nginx directory permissions..."
             ls -ld /usr/share/nginx/html
