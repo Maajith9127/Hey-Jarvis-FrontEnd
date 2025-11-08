@@ -28,22 +28,36 @@ jobs:
           cd jarvis-frontend
           npm run build
 
-      - name: 📤 Deploy to EC2
+      - name: 📤 Upload build folder to EC2
         uses: appleboy/scp-action@v0.1.4
         with:
           host: ${{ secrets.EC2_HOST }}
           username: ubuntu
-          key: ${{ secrets.EC2_SSH_KEY }}
+          key: ${{ secrets.EC2_KEY }}
           source: "jarvis-frontend/dist/*"
           target: "/home/ubuntu/jarvis-frontend-dist"
 
-      - name: 🚀 Move build to Nginx directory
+      - name: 🚀 Deploy to Nginx
         uses: appleboy/ssh-action@v0.1.7
         with:
           host: ${{ secrets.EC2_HOST }}
           username: ubuntu
-          key: ${{ secrets.EC2_SSH_KEY }}
+          key: ${{ secrets.EC2_KEY }}
           script: |
+            echo "🔧 Creating deploy folder if not exists..."
+            mkdir -p /home/ubuntu/jarvis-frontend-dist
+
+            echo "🧹 Clearing old Nginx html folder..."
             sudo rm -rf /usr/share/nginx/html/*
+
+            echo "📦 Copying new build to Nginx html folder..."
             sudo cp -r /home/ubuntu/jarvis-frontend-dist/* /usr/share/nginx/html/
+
+            echo "🔒 Setting correct permissions..."
+            sudo chown -R ubuntu:www-data /usr/share/nginx/html
+            sudo chmod -R 775 /usr/share/nginx/html
+
+            echo "🔁 Restarting Nginx..."
             sudo systemctl restart nginx
+
+            echo "✅ Deployment complete! Jarvis frontend is live."
