@@ -70,6 +70,7 @@ function App() {
 
   return (
     <div className="flex flex-col min-h-screen">
+      <div>Hello</div>
       {/* Main Content */}
       <div className="flex-1 flex flex-col md:grid md:grid-cols-4">
         {/* Todos on left */}
