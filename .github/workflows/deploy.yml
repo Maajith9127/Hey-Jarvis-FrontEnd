@@ -68,4 +68,4 @@ jobs:
             sudo chown -R ubuntu:www-data /usr/share/nginx/html
             sudo chmod -R 775 /usr/share/nginx/html
             sudo systemctl restart nginx
-            echo "✅ Nginx restarted successfully."
+            echo "✅ Nginx restarted successfully"
