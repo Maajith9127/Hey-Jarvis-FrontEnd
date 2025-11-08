@@ -27,7 +27,7 @@ jobs:
 
       - name: 🏗️ Build project
         run: |
-          echo "🟡 Building project.."
+          echo "🟡 Building project..."
           cd jarvis-frontend
           npm run build
           echo "✅ Build complete. Contents of dist folder:"
@@ -54,7 +54,7 @@ jobs:
           echo "${{ secrets.FRONTEND_DEPLOY_KEY }}" > /tmp/ec2_key.pem
           chmod 600 /tmp/ec2_key.pem
           echo "⏳ Trying to connect to ${{ secrets.EC2_HOST }} on port 22..."
-          ssh -vvv -o ConnectTimeout=10 -i /tmp/ec2_key.pem ${{ secrets.EC2_USER }}@${{ secrets.EC2_HOST }} "echo ✅ SSH connected successfully." || (echo "❌ SSH connection test failed!" && exit 1)
+          ssh -vvv -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -o ConnectTimeout=10 -i /tmp/ec2_key.pem ${{ secrets.EC2_USER }}@${{ secrets.EC2_HOST }} "echo ✅ SSH connected successfully." || (echo "❌ SSH connection test failed!" && exit 1)
         shell: bash
 
       - name: 📤 Deploy to EC2 (SCP)
@@ -69,6 +69,11 @@ jobs:
           timeout: 60s
           command_timeout: 30s
           debug: true
+          overwrite: true
+          strip_components: 1
+          rm: true
+          proxy_port: 22
+          strict: false
 
       - name: 🚀 Verify & restart Nginx
         uses: appleboy/ssh-action@v0.1.7
@@ -76,6 +81,7 @@ jobs:
           host: ${{ secrets.EC2_HOST }}
           username: ${{ secrets.EC2_USER }}
           key: ${{ secrets.FRONTEND_DEPLOY_KEY }}
+          script_stop: true
           script: |
             echo "🟡 Checking Nginx directory permissions..."
             ls -ld /usr/share/nginx/html
