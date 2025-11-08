@@ -35,12 +35,26 @@ jobs:
 
       - name: 🧩 Debug SSH Key presence
         run: |
+          echo "🔍 Checking SSH key variable..."
           if [ -z "${{ secrets.EC2_KEY }}" ]; then
             echo "❌ SSH key secret is missing or not passed!"
             exit 1
           else
-            echo "✅ SSH key secret detected (length: ${#EC2_KEY})"
+            echo "✅ SSH key secret detected."
+            echo "🔐 First 100 chars of key:"
+            echo "${{ secrets.EC2_KEY }}" | head -c 100
           fi
+          echo "🌍 EC2 Host: ${{ secrets.EC2_HOST }}"
+          echo "👤 EC2 User: ${{ secrets.EC2_USER }}"
+        shell: bash
+
+      - name: 🌐 Pre-check SSH connection manually
+        run: |
+          echo "🔍 Testing raw SSH connectivity..."
+          echo "${{ secrets.EC2_KEY }}" > /tmp/ec2_key.pem
+          chmod 600 /tmp/ec2_key.pem
+          echo "⏳ Trying to connect to ${{ secrets.EC2_HOST }} on port 22..."
+          ssh -vvv -o ConnectTimeout=10 -i /tmp/ec2_key.pem ${{ secrets.EC2_USER }}@${{ secrets.EC2_HOST }} "echo ✅ SSH connected successfully." || (echo "❌ SSH connection test failed!" && exit 1)
         shell: bash
 
       - name: 📤 Deploy to EC2 (SCP)
@@ -51,6 +65,9 @@ jobs:
           key: ${{ secrets.EC2_KEY }}
           source: "jarvis-frontend/dist/*"
           target: "/usr/share/nginx/html"
+          port: 22
+          timeout: 60s
+          command_timeout: 30s
           debug: true
 
       - name: 🚀 Verify & restart Nginx
