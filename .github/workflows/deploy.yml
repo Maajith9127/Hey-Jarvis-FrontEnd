@@ -27,7 +27,7 @@ jobs:
 
       - name: 🏗️ Build project
         run: |
-          echo "🟡 Building project..."
+          echo "🟡 Building project.."
           cd jarvis-frontend
           npm run build
           echo "✅ Build complete. Contents of dist folder:"
